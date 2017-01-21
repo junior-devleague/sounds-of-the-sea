@@ -45,20 +45,14 @@ function create(){
   player.animations.play('moving', 9, true);
   //obstacle.anchor.setTo(0,1);
 
-  //Create a Wave
-  var sinData = game.math.sinCosGenerator(GAME_WIDTH / 2, 40, 1, 6);
-  sin = sinData.sin;
-
+  // //Create a Wave
+  waveLevelNorm();
 };
 
 function update(){
   // // Draw sinData
-  var gfx = game.add.graphics();
-  gfx.lineStyle(3, 0x24efdc);
-  for (var i = 0; i < sin.length; i ++) {
-    gfx.lineTo(300 + i, 500 + sin[i]);
-  }
+  drawSin();
 
 };
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
+var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
