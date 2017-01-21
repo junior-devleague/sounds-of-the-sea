@@ -16,9 +16,15 @@ function preload(){
   game.load.spritesheet('player', 'assets/player.png', 55, 48);
   //game.load.image('enemy', 'assets/ship.png');
   game.load.spritesheet('enemy', 'assets/ship.png', 50, 45);
+
+  game.load.image('background', 'assets/background-underwater.png');
 };
 
 function create(){
+
+  //game.add.tileSprite(0, 0, 1000, 600, "background")
+
+  game.add.image(44, 80, 'background');
   //Add player sprite to screen
   player = game.add.sprite(200, 300, 'player');
   //obstacle.scale.setTo(1,0.2);
@@ -27,6 +33,8 @@ function create(){
 
   //Add enemy sprite to screen
   enemy = game.add.sprite(400, 300, 'enemy');
+
+
   //obstacle.scale.setTo(1, 0.2);
   enemy.animations.add('moving', [3, 4, 5]);
   enemy.animations.play('moving', 5, true);
