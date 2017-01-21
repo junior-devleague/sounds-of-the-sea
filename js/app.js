@@ -6,6 +6,8 @@ var player;
 //This sets the score to start at -1.
 var score = -1;
 
+var bmd;
+var sin;
 
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
@@ -46,11 +48,28 @@ function create(){
   music = game.add.audio('startMusic');
 
   music.play();
+
+  //  The frequency (4) = the number of waves
+  var data = game.math.sinCosGenerator(800, 200, 1, 4);
+
+  sin = data.sin;
+
+    //  Just so we can see the data
+  bmd = game.add.bitmapData(800, 600);
+  //bmd.addToWorld();
+
   //obstacle.anchor.setTo(0,1);
 };
 
 function update(){
+    bmd.clear();
 
+    for (var i = 0; i < 800; i++)
+    {
+        bmd.rect(i, 300 + sin[i], 2, 2, '#ffffff');
+    }
+
+    Phaser.ArrayUtils.rotate(sin);
 };
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
