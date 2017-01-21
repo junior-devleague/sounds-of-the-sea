@@ -3,6 +3,8 @@ var spaceKey;
 
 var player;
 
+var sin;
+
 //This sets the score to start at -1.
 var score = -1;
 
@@ -59,17 +61,13 @@ function create(){
   //bmd.addToWorld();
 
   //obstacle.anchor.setTo(0,1);
+
+  // //Create a Wave
+  waveLevelNorm();
 };
 
 function update(){
-    bmd.clear();
-
-    for (var i = 0; i < 800; i++)
-    {
-        bmd.rect(i, 300 + sin[i], 2, 2, '#ffffff');
-    }
-
-    Phaser.ArrayUtils.rotate(sin);
+  drawSin();
 };
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
+var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
