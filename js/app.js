@@ -14,12 +14,19 @@ var GAME_CONTAINER_ID = 'gameDiv';
 //This is the object which runs the game.
 function preload(){
   game.load.image('player', 'assets/player.png');
+  game.load.image('enemy', 'assets/ship.png');
 };
 
 function create(){
+  //Add player sprite to screen
   game.add.sprite(200, 300, 'player');
-  obstacle.scale.setTo(1,0.2);
-  obstacle.anchor.setTo(0,1);
+  //obstacle.scale.setTo(1,0.2);
+  //obstacle.anchor.setTo(0,1);
+
+  //Add enemy sprite to screen
+  game.add.sprite(400, 300, 'enemy');
+  //obstacle.scale.setTo(1, 0.2);
+  //obstacle.anchor.setTo(0,1);
 };
 
 function update(){
