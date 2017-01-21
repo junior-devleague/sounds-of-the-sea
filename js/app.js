@@ -3,6 +3,8 @@ var spaceKey;
 
 var player;
 
+var sin;
+
 //This sets the score to start at -1.
 var score = -1;
 
@@ -42,9 +44,20 @@ function create(){
   player.animations.add('moving', [6, 7, 8]);
   player.animations.play('moving', 9, true);
   //obstacle.anchor.setTo(0,1);
+
+  //Create a Wave
+  var sinData = game.math.sinCosGenerator(GAME_WIDTH / 2, 40, 1, 6);
+  sin = sinData.sin;
+
 };
 
 function update(){
+  // // Draw sinData
+  var gfx = game.add.graphics();
+  gfx.lineStyle(3, 0x24efdc);
+  for (var i = 0; i < sin.length; i ++) {
+    gfx.lineTo(300 + i, 500 + sin[i]);
+  }
 
 };
 
