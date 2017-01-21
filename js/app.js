@@ -13,8 +13,8 @@ var GAME_CONTAINER_ID = 'gameDiv';
 
 //This is the object which runs the game.
 function preload(){
-  game.load.image('player', 'assets/player.png');
-  game.load.image('enemy', 'assets/ship.png');
+  game.load.spritesheet('player', 'assets/player.png', 55, 48);
+  //game.load.image('enemy', 'assets/ship.png');
   game.load.spritesheet('enemy', 'assets/ship.png', 50, 45);
 };
 
@@ -29,7 +29,10 @@ function create(){
   enemy = game.add.sprite(400, 300, 'enemy');
   //obstacle.scale.setTo(1, 0.2);
   enemy.animations.add('moving', [3, 4, 5]);
-  enemy.animations.play('moving', 20, true);
+  enemy.animations.play('moving', 5, true);
+
+  player.animations.add('moving', [6, 7, 8]);
+  player.animations.play('moving', 9, true);
   //obstacle.anchor.setTo(0,1);
 };
 
