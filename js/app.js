@@ -18,6 +18,7 @@ function preload(){
   game.load.spritesheet('enemy', 'assets/ship.png', 50, 45);
 
   game.load.image('background', 'assets/background-underwater.png');
+  game.load.audio('startMusic', 'assets/08-aquatic-ambiance(sampleMusic).mp3');
 };
 
 function create(){
@@ -41,6 +42,10 @@ function create(){
 
   player.animations.add('moving', [6, 7, 8]);
   player.animations.play('moving', 9, true);
+
+  music = game.add.audio('startMusic');
+
+  music.play();
   //obstacle.anchor.setTo(0,1);
 };
 
