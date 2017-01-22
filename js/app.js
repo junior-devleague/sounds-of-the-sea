@@ -46,17 +46,18 @@ function create(){
 
   //Create a Wave
   waveLevelNorm();
+  waveBox();
 
   //Create a cursor
   var rect = game.add.graphics(100, 100);
   rect.beginFill(0xd0d0d0);
   rect.lineStyle(2, 0xd0d0d0, 1);
-  rect.drawRect(200, 350, 3, 100);
+  rect.drawRect(265, 350, 3, 100);
   rect.endFill();
 
   //Animate cursor
   var tRect = game.add.tween(rect);
-  tRect.to({width: 200, x: 500}, 2500, Phaser.Easing.Linear.None, true, 0, 9999, false).loop(true);
+  tRect.to({width: 300, x: 500}, 2500, Phaser.Easing.Linear.None, true, 0, 9999, false).loop(true);
 
   //text = game.add.sprite(200, 200, 'text');
 

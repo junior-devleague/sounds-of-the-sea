@@ -18,7 +18,16 @@ function drawSin(){
   var gfx = game.add.graphics();
   gfx.lineStyle(3, 0x24efdc);
   for (var i = 0; i < sin.length; i ++) {
-    gfx.lineTo(300 + i, 500 + sin[i]);
+    gfx.lineTo(368 + i, 500 + sin[i]);
   }
 };
+
+//Create borders for waves
+function waveBox(){
+  var waveBox = game.add.graphics(100, 100);
+  waveBox.beginFill(0xf3faff);
+  waveBox.lineStyle(2, 0x000000, 1);
+  waveBox.drawRect(265, 350, 405, 100);
+  waveBox.endFill();
+}
 
