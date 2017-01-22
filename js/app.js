@@ -50,16 +50,17 @@ function create(){
 };
 
 function update(){
-  if (spaceKey.isDown === true) {
+  if (spaceKey.isDown === true || charge <= 10) {
   console.log("hi")
   charge += 1;
   }
-  else if (spaceKey.isDown && charge >= 10) {
+  if (spaceKey.isDown && charge >= 10) {
+    charge -= 10
     function useAbility() {
     console.log('cow')
 
   }
-
+  useAbility()
   }
 
 
