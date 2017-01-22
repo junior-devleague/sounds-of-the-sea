@@ -11,6 +11,9 @@ var charge;
 var text;
 var sin;
 var bounds;
+var background;
+var playerSprite;
+var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
 
 //This sets the score to start at -1.
 var score = -1;
@@ -24,17 +27,24 @@ var SuperBadNet;
 
 //This is the object which runs the game.
 function preload(){
-  game.load.spritesheet('player', 'assets/Player2Simple.png', 63, 64);
+  playerSprite = spritePlayers[Math.floor(Math.random() * spritePlayers.length)];
+  var choseSprite = 'assets/' + playerSprite + ".png";
+
+  game.load.spritesheet('player', choseSprite, 63, 64);
   game.load.spritesheet('enemy', 'assets/Net.png', 64, 63.5);
-  game.load.image('background', 'assets/background-underwater.png');
+  game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
-  game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
+  game.load.spritesheet('attack', 'assets/Attack.png', 32, 32)
+  game.load.spritesheet('profile', 'assets/Profile.png');
+
 };
 
 function create(){
-  game.add.image(44, 80, 'background');
+  //Tiles background image
+  background = game.add.tileSprite(0, -25, 800, 700, 'background');
+
   GameHero = new Player(game, 100, 150);
-  SuperBadNet = new EnemyNet(game, 500, 100);
+  SuperBadNet = new EnemyNet(game, 500, 150);
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(useAbility);
@@ -52,12 +62,15 @@ function create(){
   var rect = game.add.graphics(100, 100);
   rect.beginFill(0xd0d0d0);
   rect.lineStyle(2, 0xd0d0d0, 1);
-  rect.drawRect(265, 350, 3, 100);
+  rect.drawRect(285, 392, 3, 96);
   rect.endFill();
 
   //Animate cursor
   var tRect = game.add.tween(rect);
-  tRect.to({x: 500}, 2500, Phaser.Easing.Linear.None, true).loop('true');
+  tRect.to({x: 500}, 5000, Phaser.Easing.Linear.None, true).loop('true');
+
+  //Create profile box
+  profileBox();
 
   //text = game.add.sprite(200, 200, 'text');
 
@@ -72,6 +85,9 @@ function handleAttack(){
 }
 
 function update(){
+  //Controls the speed of the background waves
+  background.tilePosition.x -= 2.5
+  ;
   if (spaceKey.isDown === true || charge <= 10) {
     charge += 1;
   }
