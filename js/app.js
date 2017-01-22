@@ -138,9 +138,9 @@ function changingNet(){
     }
   }
   if ((rect.x > 120 && rect.x < 190) ||
-      (rect.x > 210 && rect.x < 310) ||
-      (rect.x > 330 && rect.x < 440) ||
-      (rect.x > 460 && rect.x < 500)) {
+      (rect.x > 220 && rect.x < 320) ||
+      (rect.x > 340 && rect.x < 450) ||
+      (rect.x > 470 && rect.x < 500)) {
     singGood.stop();
     GameHero.takeDamage(50);
     cursorSpeed += 10;
