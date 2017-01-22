@@ -7,8 +7,11 @@ class GameCharacter {
   }
 
   renderHealthBar(game, xPos, yPos) {
-    this.healthBar = new HealthBar(game, xPos, yPos);
+    this.healthBar = new HealthBar(game, {x: xPos, y: yPos});
+  }
 
+  takeDamage(damage) {
+    this.healthBar.setPercent(1);
   }
   changeNet(xPos, yPos, type){
     this.sprite = game.add.sprite(xPos, yPos, type);
