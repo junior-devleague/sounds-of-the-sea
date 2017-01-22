@@ -151,6 +151,7 @@ function changingNet(){
       game.time.events.add(Phaser.Timer.SECOND * 1, kill, this);
       game.time.events.add(Phaser.Timer.SECOND * 1, killPlayer, this);
       game.time.events.add(Phaser.Timer.SECOND * 1, killEnemyAttack, this);
+      game.time.events.add(Phaser.Timer.SECOND * 1, gameOver, this);
     }
     enemyAttack = game.add.sprite(150, 80, 'enemyAttack');
     enemyAttack.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
