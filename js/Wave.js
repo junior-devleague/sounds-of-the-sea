@@ -53,6 +53,7 @@ function profileBox(){
   if (text === "Lura"){
     prof = game.add.sprite(-12, -11, 'profile', 1);
     prof.scale.setTo(1.3,1.3);
+  }
   if (text === "Christie") {
     prof = game.add.sprite(-12, -7, 'profile', 1);
     prof.scale.setTo(1.3,1.3);
