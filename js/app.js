@@ -6,7 +6,7 @@ var mouse;
 var player;
 var attack;
 var charge;
-
+var text;
 var sin;
 
 //This sets the score to start at -1.
@@ -30,6 +30,7 @@ function preload(){
   game.load.image('background', 'assets/background-underwater.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.image('attack', 'assets/attack.png');
+  game.load.image('text', 'assets/text.png')
 };
 
 function create(){
@@ -61,6 +62,8 @@ function create(){
 
   music.play();
 
+  text = game.add.sprite(200, 200, 'text');
+
   //  The frequency (4) = the number of waves
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
 
@@ -86,7 +89,7 @@ function update(){
 
     charge -= 10;
   }
-
+    setInterval(function(){player = game.add.sprite(900, 300, 'player');},3);
 
     charge -= 10
     function useAbility() {
