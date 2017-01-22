@@ -115,14 +115,6 @@ function changingNet(){
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
     }
   }
-};
-
-function update(){
-  //Controls the speed of the background waves
-  background.tilePosition.x -= 2.5;
-  if (spaceKey.isDown === true || charge <= 10) {
-    charge += 1;
-  }
   if ((rect.x > 120 && rect.x < 170) ||
       (rect.x > 190 && rect.x < 300) ||
       (rect.x > 443 && rect.x < 498)) {
@@ -142,6 +134,8 @@ function update(){
   drawSin();
   handleAttack();
 
+  //Controls the speed of the background waves
+  background.tilePosition.x -= 2.5;
   GameHero.takeDamage(24);
   SuperBadNet.takeDamage(10);
 };
