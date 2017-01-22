@@ -77,20 +77,21 @@ function create(){
 
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
-  console.log("hi")
-  charge += 1;
+    console.log("hi")
+    charge += 1;
   }
   if (spaceKey.isDown && charge >= 10) {
-    charge -= 10
-    function useAbility() {
-    console.log('cow')
-
+    charge -= 10;
   }
+
   useAbility();
-  // // Draw sinData
+  // Draw sinData
 
   drawSin();
-}
 };
+
+function useAbility() {
+  console.log('cow');
+}
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
