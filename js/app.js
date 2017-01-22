@@ -38,12 +38,14 @@ function preload(){
   playerSprite = spritePlayers[Math.floor(Math.random() * spritePlayers.length)];
   var choseSprite = 'assets/' + playerSprite + ".png";
   game.load.spritesheet('player', choseSprite, 63, 64);
+  var choseProfile = 'assets/' + playerSprite + "Profile.png";
+  game.load.spritesheet('profile', choseProfile, 55, 58);
+  game.load.spritesheet('sharkboy', 'assets/AohmsenProfile.png', 60, 60);
   game.load.spritesheet('enemy', 'assets/Net2.png', 64, 63.5);
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
-  game.load.spritesheet('profileF', 'assets/Profile.png', 55, 58);
-  game.load.spritesheet('profileB', 'assets/ProfileBoy.png', 55, 58);
+  //game.load.spritesheet('profileB', 'assets/ProfileBoy.png', 55, 58);
 };
 
 function create(){

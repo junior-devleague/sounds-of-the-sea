@@ -50,10 +50,35 @@ function profileBox(){
   profileBox.endFill();
   var spriteIndex = spritePlayers.indexOf(playerSprite);
   var text = spritePlayers[spriteIndex];
-  if (text === 'Aohmsen' || text === 'PlayerBoy'){
-    prof = game.add.sprite(0, 5, 'profileB', 1);
-  }else{
-    prof = game.add.sprite(0, 0, 'profileF', 1);
+  console.log(text);
+  if (text === "Lura"){
+    prof = game.add.sprite(-12, -11, 'profile', 1);
+    prof.scale.setTo(1.3,1.3);
   }
+  if (text === "Christie") {
+    prof = game.add.sprite(-12, -7, 'profile', 1);
+    prof.scale.setTo(1.3,1.3);
+  }
+  if (text === "Aohmsen") {
+    prof = game.add.sprite(-7, 4, 'sharkboy', 1);
+    prof.scale.setTo(1.3,1.3);
+  }
+  if (text === "Sheena") {
+    prof = game.add.sprite(-13, -10, 'profile', 1);
+    prof.scale.setTo(1.3,1.3);
+  }
+  if (text === "Nat"){
+    prof = game.add.sprite(-8, -6, 'profile', 1);
+    prof.scale.setTo(1.2,1.2);
+  }
+  // if (text === "Lura"){
+  //   prof = game.add.sprite(-10, -9, 'profile', 1);
+  //   prof.scale.setTo(1.3,1.3);
+  // }
+  if (text === "Player3"){
+    console.log("hi");
+  }
+  //prof = game.add.sprite(0, 0, 'profile', 1);
+  // prof.scale.setTo(1.3,1.3);
 }
 
