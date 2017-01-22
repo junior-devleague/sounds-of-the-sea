@@ -37,7 +37,7 @@ function waveBox(){
   sonicBox.drawRect(293, 468, 405, 30);
   sonicBox.endFill();
   var text = "Sonic Wave";
-  var style = { font: "24px Arial Black", fill: "#ffffff", align: "center" };
+  var style = { font: "24px Averia Serif Libre", fill: "#ffffff", align: "center" };
   var t = game.add.text(520, 570, text, style);
 }
 
