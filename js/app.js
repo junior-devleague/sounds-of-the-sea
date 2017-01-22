@@ -1,5 +1,8 @@
+console.log(Phaser);
 //This sets the variable for the spacebar.
 var spaceKey;
+var charge = 0;
+var mouse;
 
 var player;
 var attack;
@@ -12,6 +15,8 @@ var score = -1;
 
 var bmd;
 var sin;
+
+
 
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
@@ -38,6 +43,7 @@ function create(){
   player.scale.setTo(2,2);
   //obstacle.anchor.setTo(0,1);
 
+  spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   //Add enemy sprite to screen
   enemy = game.add.sprite(500, 100, 'enemy');
   enemy.scale.setTo(4,4);
@@ -81,6 +87,7 @@ function update(){
 
   }
   useAbility();
+  // // Draw sinData
 
   drawSin();
 }
