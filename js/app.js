@@ -1,32 +1,29 @@
 //This sets the variable for the spacebar.
+var attackBullets;
+var attack_speed = 6;
+var background;
+var bmd;
+var bounds;
+var enemyAttack;
+var GAME_CONTAINER_ID = 'gameDiv';
+var GAME_HEIGHT = 600;
+var GameHero;
+var GAME_WIDTH = 800;
+var mouse;
 var PlayerAttack;
 var playerAttack;
-var attackBullets;
-var enemyAttack;
-var attack_speed = 6;
-var spaceKey;
-var charge = 0;
-var mouse;
-var charge;
-var text;
-var sin;
-var rect;
-var walk;
-var bounds;
-var background;
-var prof;
 var playerSprite;
-var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
-
+var prof;
+var rect;
 //This sets the score to start at -1.
 var score = -1;
-var bmd;
-
-var GAME_WIDTH = 800;
-var GAME_HEIGHT = 600;
-var GAME_CONTAINER_ID = 'gameDiv';
-var GameHero;
+var sin;
+var spaceKey;
+var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
 var SuperBadNet;
+var text;
+var walk;
+
 
 //This is the object which runs the game.
 function preload(){
@@ -52,17 +49,12 @@ function create(){
 
   GameHero = new Player(game, 100, 200, playerSprite);
   SuperBadNet = new EnemyNet(game, 500, 150);
+  PlayerAttack = new Attack(game)
 
   //Handle space bar press and call function on keyup
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(changingNet);
 
-  PlayerAttack = new Attack(game)
-  music = game.add.audio('startMusic');
-  music.play();
-
-  singGood = game.add.audio('sing-success');
-  singBad = game.add.audio('sing-failure');
   //Create a Wave
   waveLevelNorm();
   waveBox();
@@ -81,7 +73,13 @@ function create(){
   //Create profile box
   profileBox();
 
-  playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 190, 'attack')
+  music = game.add.audio('startMusic');
+  music.play();
+
+  singGood = game.add.audio('sing-success');
+  singBad = game.add.audio('sing-failure');
+
+  playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 190, 'attack');
 };
 
 function handleAttack(){
@@ -98,18 +96,11 @@ function killEnemyAttack(){
 };
 
 function fireWeapon(){
-  playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 190, 'attack');
+  playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 370, 'attack');
   playerAttack.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-  playerAttack.scale.setTo(10,17);
+  playerAttack.scale.setTo(10,30);
   playerAttack.animations.play('walk', 5, true);
-  movePlayerAttack();
 }
-
-function movePlayerAttack(){
-  if (playerAttack.x < 500){
-    playerAttack.x += 50;
-  }
-};
 
 function changingNet(){
   var value = SuperBadNet.sprite.key;
@@ -149,20 +140,13 @@ function changingNet(){
   }
 };
 
-console.log(spaceKey);
-
 function update(){
   drawSin();
   handleAttack();
 
   //Controls the speed of the background waves
   background.tilePosition.x -= 2.5;
-  // fireWeapon();
-  playerAttack.x += 50;
-
-  // if (spaceKey.isDown()){
-  //   movePlayerAttack();
-  // }
+  playerAttack.x += 11;
 };
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
