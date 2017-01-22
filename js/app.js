@@ -3,11 +3,6 @@ console.log(Phaser);
 var spaceKey;
 var charge = 0;
 var mouse;
-var closeButton = game.make.sprite(pw, -ph, 'close');
-    closeButton.inputEnabled = true;
-    closeButton.input.priorityID = 1;
-    closeButton.input.useHandCursor = true;
-    closeButton.events.onInputDown.add(closeWindow, this);
 var player;
 var attack;
 var charge;
@@ -59,6 +54,7 @@ function create(){
   waveLevelNorm();
 };
 
+<<<<<<< Updated upstream
 // function openWindow() {
 
 //     if ((tween !== null && tween.isRunning) || popup.scale.x === 1)
@@ -71,6 +67,8 @@ function create(){
 
 // }
 
+=======
+>>>>>>> Stashed changes
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
     console.log("hi")
@@ -84,17 +82,6 @@ function update(){
 
   drawSin();
 };
-// function closeWindow() {
-
-//     if (tween && tween.isRunning || popup.scale.x === 0.1)
-//     {
-//         return;
-//     }
-
-//     //  Create a tween that will close the window, but only if it's not already tweening or closed
-//     tween = game.add.tween(popup.scale).to( { x: 0.1, y: 0.1 }, 500, Phaser.Easing.Elastic.In, true);
-
-// }
 
 function useAbility() {
   console.log('cow');
