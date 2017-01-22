@@ -24,7 +24,7 @@ var SuperBadNet;
 //This is the object which runs the game.
 function preload(){
   game.load.spritesheet('player', 'assets/Player2Simple.png', 63, 64);
-  game.load.spritesheet('enemy', 'assets/net.png', 64, 63.5);
+  game.load.spritesheet('enemy', 'assets/Net.png', 64, 63.5);
   game.load.image('background', 'assets/background-underwater.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
@@ -65,7 +65,6 @@ function create(){
 };
 
 function useAbility() {
-  // console.log('cow');
   attack.add(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 7));
 }
 
@@ -75,7 +74,6 @@ function handleAttack(){
 
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
-    //console.log("hi")
     charge += 1;
   }
   if (spaceKey.isDown && charge >= 10) {
@@ -88,6 +86,9 @@ function update(){
 
   drawSin();
   handleAttack();
+
+  GameHero.takeDamage(24);
+  SuperBadNet.takeDamage(10);
 };
 
 
