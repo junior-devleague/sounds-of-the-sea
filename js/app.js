@@ -9,9 +9,8 @@ var player;
 //This sets the score to start at -1.
 var score = -1;
 
-spaceKey.onDown.add(useAbility, this);...function useAbility(this) {
-    console.log('cow')
-};
+
+
 
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
@@ -37,7 +36,6 @@ function create(){
   //obstacle.anchor.setTo(0,1);
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  spaceKey = game.input.mouse.addKey(Phaser.Keyboard.MOUSE);
   //Add enemy sprite to screen
   enemy = game.add.sprite(400, 300, 'enemy');
 
@@ -53,14 +51,17 @@ function create(){
 
 function update(){
   if (spaceKey.isDown === true) {
-  console.log("hi")  // charge++;
+  console.log("hi")
+  charge += 1;
   }
-  if (spaceKey.isDown && charge <= 10) {
-    // charge = charge
+  else if (spaceKey.isDown && charge >= 10) {
+    function useAbility() {
+    console.log('cow')
 
   }
 
-  // console.log(charge)
+  }
+
 
 };
 
