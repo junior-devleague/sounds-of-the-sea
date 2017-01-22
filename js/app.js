@@ -98,9 +98,17 @@ function update(){
     charge += 1;
   }
   if (spaceKey.isDown && charge >= 10) {
+<<<<<<< Updated upstream
     charge -= 10;
   }
 
+=======
+    charge -= 10
+    function useAbility() {
+      console.log('cow')
+
+    }
+>>>>>>> Stashed changes
   useAbility();
 
   drawSin();
