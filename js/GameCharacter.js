@@ -8,15 +8,15 @@ class GameCharacter {
       width: 200,
       height: 30,
       bg: {
-        color: '#651828'
+          color: '#173559'
       },
       bar: {
-        color: '#FEFF03'
+          color: '#e4eccd'
       },
       animationDuration: 200
     };
 
-    this.healthBarTextConfig = { font: "24px Averia Serif Libre", fill: "#ff0044", align: "left"};
+    this.healthBarTextConfig = { font: "24px Averia Serif Libre", fill: "#ffffff", align: "left"};
     this.healthBarText;
     this.sprite = game.add.sprite(xPos, yPos, type);
   }

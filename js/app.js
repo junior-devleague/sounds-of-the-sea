@@ -21,7 +21,7 @@ var score = -1;
 var sin;
 var spaceKey;
 // var speed = 50;
-var spritePlayers = ['Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'Christie'];
+var spritePlayers = ['GeneSharkman', 'Lura', 'Nat', 'Sheena', 'Player3', 'Christie'];
 var SuperBadNet;
 var text;
 var walk;
@@ -37,7 +37,7 @@ function preload(){
   game.load.spritesheet('enemyAttack', 'assets/EnemyAttack.png', 57, 57);
   playerSprite = spritePlayers[Math.floor(Math.random() * spritePlayers.length)];
   var choseSprite = 'assets/' + playerSprite + ".png";
-  game.load.spritesheet('player', choseSprite, 63, 64);
+  game.load.spritesheet('player', choseSprite, 64, 64);
   game.load.spritesheet('enemy', 'assets/Net2.png', 64, 63.5);
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
@@ -173,4 +173,4 @@ function update(){
   playerAttack.x += 11;
 };
 
-var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
+var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.CANVAS, 'gameDiv', { preload: preload, update: update, create: create });
