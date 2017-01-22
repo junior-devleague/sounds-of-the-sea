@@ -21,7 +21,7 @@ var score = -1;
 var sin;
 var spaceKey;
 // var speed = 50;
-var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
+var spritePlayers = ['Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'Christie'];
 var SuperBadNet;
 var text;
 var walk;
@@ -114,10 +114,11 @@ function fireWeapon(){
 }
 
 function changingNet(){
+  console.log(rect.x);
   var value = SuperBadNet.sprite.key;
-  if ((rect.x > 190 && rect.x < 210) ||
-      (rect.x > 310 && rect.x < 330) ||
-      (rect.x > 440 && rect.x < 460)) {
+  if ((rect.x > 190 && rect.x < 220) ||
+      (rect.x > 320 && rect.x < 340) ||
+      (rect.x > 450 && rect.x < 470)) {
     fireWeapon();
     if (value === 'enemy'){
       SuperBadNet.takeDamage(100 * .5);
