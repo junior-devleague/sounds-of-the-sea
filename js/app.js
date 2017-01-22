@@ -12,6 +12,7 @@ var text;
 var sin;
 var bounds;
 var background;
+var prof;
 var playerSprite;
 var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
 
@@ -34,8 +35,9 @@ function preload(){
   game.load.spritesheet('enemy', 'assets/Net.png', 64, 63.5);
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
-  game.load.spritesheet('attack', 'assets/Attack.png', 32, 32)
-  game.load.spritesheet('profile', 'assets/Profile.png');
+  game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
+  game.load.spritesheet('profileF', 'assets/Profile.png', 55, 58);
+  game.load.spritesheet('profileB', 'assets/ProfileBoy.png', 55, 58);
 
 };
 

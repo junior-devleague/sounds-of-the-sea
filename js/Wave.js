@@ -38,7 +38,16 @@ function profileBox(){
   var profileBox = game.add.graphics(100, 100);
   profileBox.beginFill(0xf3faff);
   profileBox.lineStyle(2, 0x000000, 1);
-  profileBox.drawRect(165,390, 100, 100);
+  profileBox.drawRect(60,390, 200, 100);
   profileBox.endFill();
+  var spriteIndex = spritePlayers.indexOf(playerSprite);
+  var text = spritePlayers[spriteIndex];
+  var style = { font: "18px Arial", fill: "#ff0044", align: "center" };
+  var t = game.add.text(218, 530, text, style);
+  if (text === 'Aohmsen' || text === 'PlayerBoy'){
+    prof = game.add.sprite(150, 510, 'profileB', 1);
+  }else{
+    prof = game.add.sprite(150, 500, 'profileF', 1);
+  }
 }
 
