@@ -4,12 +4,11 @@ class EnemyNet extends GameCharacter {
     const HEALTH_BAR_YPOS = 20;
 
     super(game, xPos, yPos, 'enemy');
-    this.sprite.animations.add('moving', [3, 4, 5]);
+    this.sprite.animations.add('moving');
     this.sprite.animations.play('moving', 5, true);
     this.sprite.scale.setTo(4,4);
 
     //render health
     this.renderHealthBar(this.game, HEALTH_BAR_XPOS, HEALTH_BAR_YPOS);
   }
-
 }
