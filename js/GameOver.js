@@ -3,7 +3,7 @@ function gameOver(){
   var endTextBox = game.add.graphics(100, 100);
   var endText = "GAME OVER! \n Enjoy your marine park entertainment.";
   var style = { font: "32px Averia Serif Libre", fill: "#ffffff", align: "center"};
-  var text = game.add.text(50, 160, endText, style);
+  var text = game.add.text(125, 160, endText, style);
   humanTalk();
 };
 
