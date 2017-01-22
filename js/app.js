@@ -1,31 +1,29 @@
 //This sets the variable for the spacebar.
-var PlayerAttack;
 var attackBullets;
-var enemyAttack;
 var attack_speed = 6;
-var spaceKey;
-var charge = 0;
-var mouse;
-var charge;
-var text;
-var sin;
-var rect;
-var walk;
-var bounds;
 var background;
-var prof;
+var bmd;
+var bounds;
+var enemyAttack;
+var GAME_CONTAINER_ID = 'gameDiv';
+var GAME_HEIGHT = 600;
+var GameHero;
+var GAME_WIDTH = 800;
+var mouse;
+var PlayerAttack;
+var playerAttack;
 var playerSprite;
-var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
-
+var prof;
+var rect;
 //This sets the score to start at -1.
 var score = -1;
-var bmd;
-
-var GAME_WIDTH = 800;
-var GAME_HEIGHT = 600;
-var GAME_CONTAINER_ID = 'gameDiv';
-var GameHero;
+var sin;
+var spaceKey;
+var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
 var SuperBadNet;
+var text;
+var walk;
+
 
 //This is the object which runs the game.
 function preload(){
@@ -49,19 +47,14 @@ function create(){
   //Tiles background image
   background = game.add.tileSprite(0, -25, 800, 700, 'background');
 
-  GameHero = new Player(game, 100, 150, playerSprite);
+  GameHero = new Player(game, 100, 200, playerSprite);
   SuperBadNet = new EnemyNet(game, 500, 150);
+  PlayerAttack = new Attack(game)
 
   //Handle space bar press and call function on keyup
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(changingNet);
 
-  PlayerAttack = new Attack(game)
-  music = game.add.audio('startMusic');
-  music.play();
-
-  singGood = game.add.audio('sing-success');
-  singBad = game.add.audio('sing-failure');
   //Create a Wave
   waveLevelNorm();
   waveBox();
@@ -80,14 +73,17 @@ function create(){
   //Create profile box
   profileBox();
 
+  music = game.add.audio('startMusic');
+  music.play();
+
+  singGood = game.add.audio('sing-success');
+  singBad = game.add.audio('sing-failure');
+
+  playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 190, 'attack');
 };
 
 function handleAttack(){
   PlayerAttack.animateFire();
-};
-
-function useAbility() {
-  attack.add(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 7));
 };
 
 function kill(){
@@ -99,19 +95,26 @@ function killEnemyAttack(){
   enemyAttack.kill();
 };
 
+function fireWeapon(){
+  playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 370, 'attack');
+  playerAttack.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+  playerAttack.scale.setTo(10,30);
+  playerAttack.animations.play('walk', 5, true);
+}
+
 function changingNet(){
   var value = SuperBadNet.sprite.key;
   if ((rect.x > 190 && rect.x < 210) ||
       (rect.x > 310 && rect.x < 330) ||
       (rect.x > 440 && rect.x < 460)) {
-    PlayerAttack.fireWeapon(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 1));
+    fireWeapon();
     if (value === 'enemy'){
-      SuperBadNet.takeDamage(50);
+      SuperBadNet.takeDamage(100 * .5);
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 150, 'level1Fray');
     }
     if (value === 'level1Fray'){
-      SuperBadNet.takeDamage(0);
+      SuperBadNet.takeDamage(50 * .5);
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 150, 'level1Break');
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
@@ -133,7 +136,6 @@ function changingNet(){
     enemyAttack.scale.setTo(1.5,4.5);
     enemyAttack.angle + 500;
     enemyAttack.animations.play('walk', 5, true);
-
     game.time.events.add(Phaser.Timer.SECOND * 2, killEnemyAttack, this);
   }
 };
@@ -144,6 +146,7 @@ function update(){
 
   //Controls the speed of the background waves
   background.tilePosition.x -= 2.5;
+  playerAttack.x += 11;
 };
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
