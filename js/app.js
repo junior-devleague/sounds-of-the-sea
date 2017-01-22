@@ -10,6 +10,7 @@ var attack;
 var charge;
 var text;
 var sin;
+var bounds;
 
 //This sets the score to start at -1.
 var score = -1;
@@ -31,7 +32,6 @@ function preload(){
 };
 
 function create(){
-  var data = game.math.sinCosGenerator(800, 200, 1, 4);
   game.add.image(44, 80, 'background');
   GameHero = new Player(game, 100, 150);
   SuperBadNet = new EnemyNet(game, 500, 100);
@@ -57,12 +57,10 @@ function create(){
 
   //Animate cursor
   var tRect = game.add.tween(rect);
-  tRect.to({width: 300, x: 500}, 2500, Phaser.Easing.Linear.None, true, 0, 9999, false).loop(true);
+  tRect.to({x: 500}, 2500, Phaser.Easing.Linear.None, true).loop('true');
 
   //text = game.add.sprite(200, 200, 'text');
 
-  //  The frequency (4) = the number of waves
-  var data = game.math.sinCosGenerator(800, 200, 1, 4);
 };
 
 function useAbility() {
