@@ -20,7 +20,6 @@ var rect;
 var score = -1;
 var sin;
 var spaceKey;
-// var speed = 50;
 var spritePlayers = ['GeneSharkman', 'Lura', 'Nat', 'Sheena', 'Christie', 'Jason'];
 var SuperBadNet;
 var text;
@@ -37,11 +36,15 @@ function preload(){
   game.load.spritesheet('enemyAttack', 'assets/EnemyAttack.png', 57, 57);
   playerSprite = spritePlayers[Math.floor(Math.random() * spritePlayers.length)];
   var choseSprite = 'assets/' + playerSprite + ".png";
+<<<<<<< HEAD
   game.load.spritesheet('player', choseSprite, 63, 64);
   var choseProfile = 'assets/' + playerSprite + "Profile.png";
   game.load.spritesheet('profile', choseProfile, 55, 58);
   game.load.spritesheet('sharkboy', 'assets/GeneSharkmanProfile.png', 60, 60);
   game.load.spritesheet('mainPlayer', 'assets/Profile.png', 60, 60);
+=======
+  game.load.spritesheet('player', choseSprite, 64, 64);
+>>>>>>> master
   game.load.spritesheet('enemy', 'assets/Net2.png', 64, 63.5);
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
@@ -55,7 +58,7 @@ function create(){
 
   GameHero = new Player(game, 100, 200, playerSprite);
   SuperBadNet = new EnemyNet(game, 500, 150);
-  PlayerAttack = new Attack(game)
+  PlayerAttack = new Attack(game);
 
   //Handle space bar press and call function on keyup
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -138,6 +141,7 @@ function changingNet(){
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 150, 'level1Break');
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
+      game.time.events.add(Phaser.Timer.SECOND * 2.5, win, this);
     }
   }
   if ((rect.x > 120 && rect.x < 190) ||
@@ -176,4 +180,4 @@ function update(){
   playerAttack.x += 11;
 };
 
-var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
+var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.CANVAS, 'gameDiv', { preload: preload, update: update, create: create });

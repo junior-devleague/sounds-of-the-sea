@@ -26,18 +26,18 @@ function drawSin(){
 //Create borders for waves
 function waveBox(){
   var waveBox = game.add.graphics(100, 100);
-  waveBox.beginFill(0xf3faff);
-  waveBox.lineStyle(2, 0x000000, 1);
+  waveBox.beginFill(0x152131);
+  waveBox.lineStyle(2, 0x173559, 1);
   waveBox.drawRect(293, 370, 405, 100);
   waveBox.endFill();
 
   var sonicBox = game.add.graphics(100, 100);
-  sonicBox.beginFill(0x000000);
-  sonicBox.lineStyle(2, 0x000000, 1);
+  sonicBox.beginFill(0x173559);
+  sonicBox.lineStyle(2, 0x173559, 1);
   sonicBox.drawRect(293, 468, 405, 30);
   sonicBox.endFill();
   var text = "Sonic Wave";
-  var style = { font: "24px Averia Serif Libre", fill: "#ffffff", align: "center" };
+  var style = { font: "24px Averia Serif Libre", fill: "#e4ecdd", align: "center" };
   var t = game.add.text(520, 570, text, style);
 }
 
@@ -45,16 +45,14 @@ function waveBox(){
 function profileBox(){
   var profileBox = game.add.graphics(0, 5);
   profileBox.beginFill(0xf3faff);
-  profileBox.lineStyle(2, 0x000000, 1);
+  profileBox.lineStyle(2, 0x173559, 1);
   profileBox.drawRect(10, 5, 60, 55);
   profileBox.endFill();
   var spriteIndex = spritePlayers.indexOf(playerSprite);
   var text = spritePlayers[spriteIndex];
-  console.log(text);
   if (text === "Lura"){
     prof = game.add.sprite(-12, -11, 'profile', 1);
     prof.scale.setTo(1.3,1.3);
-  }
   if (text === "Christie") {
     prof = game.add.sprite(-12, -7, 'profile', 1);
     prof.scale.setTo(1.3,1.3);
@@ -71,15 +69,9 @@ function profileBox(){
     prof = game.add.sprite(-8, -6, 'profile', 1);
     prof.scale.setTo(1.2,1.2);
   }
-  if (text === "Player2"){
-    prof = game.add.sprite(-7, -11, 'mainPlayer', 1);
-    prof.scale.setTo(1.3,1.3);
-  }
   if (text === "Jason"){
     prof = game.add.sprite(-20, -7, 'profile', 1);
     prof.scale.setTo(1.5,1.5);
   }
-  //prof = game.add.sprite(0, 0, 'profile', 1);
-  // prof.scale.setTo(1.3,1.3);
 }
 
