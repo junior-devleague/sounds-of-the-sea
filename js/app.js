@@ -1,51 +1,33 @@
 //This sets the variable for the spacebar.
 var spaceKey;
-
 var player;
-
 var sin;
 
 //This sets the score to start at -1.
 var score = -1;
 
-
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
 var GAME_CONTAINER_ID = 'gameDiv';
+let GameHero;
+let SuperBadNet;
 
 //This is the object which runs the game.
 function preload(){
   game.load.spritesheet('player', 'assets/player.png', 55, 48);
-  //game.load.image('enemy', 'assets/ship.png');
   game.load.spritesheet('enemy', 'assets/ship.png', 50, 45);
-
   game.load.image('background', 'assets/background-underwater.png');
 };
 
 function create(){
-
-  //game.add.tileSprite(0, 0, 1000, 600, "background")
-
   game.add.image(44, 80, 'background');
-  //Add player sprite to screen
-  player = game.add.sprite(200, 300, 'player');
-  //obstacle.scale.setTo(1,0.2);
-  //obstacle.anchor.setTo(0,1);
-
+  //Create single GameHero Player instance
+  GameHero = new Player(game, 200, 300);
 
   //Add enemy sprite to screen
-  enemy = game.add.sprite(400, 300, 'enemy');
+  SuperBadNet = new EnemyNet(game, 300, 400);
 
-
-  //obstacle.scale.setTo(1, 0.2);
-  enemy.animations.add('moving', [3, 4, 5]);
-  enemy.animations.play('moving', 5, true);
-
-  player.animations.add('moving', [6, 7, 8]);
-  player.animations.play('moving', 9, true);
-  //obstacle.anchor.setTo(0,1);
-
-  // //Create a Wave
+  //Create a Wave
   waveLevelNorm();
 };
 
