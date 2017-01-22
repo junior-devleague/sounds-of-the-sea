@@ -1,6 +1,7 @@
 //This sets the variable for the spacebar.
 var PlayerAttack;
 var attackBullets;
+var enemyAttack;
 var attack_speed = 6;
 var spaceKey;
 var charge = 0;
@@ -9,6 +10,7 @@ var charge;
 var text;
 var sin;
 var rect;
+var walk;
 
 //This sets the score to start at -1.
 var score = -1;
@@ -31,6 +33,7 @@ function preload(){
   game.load.spritesheet('level1Break', 'assets/NetBreak.png', 64, 63.5);
   game.load.audio('sing-success', 'assets/sing-success.wav');
   game.load.audio('sing-failure', 'assets/sing-fail.wav');
+  game.load.spritesheet('enemyAttack', 'assets/EnemyAttack.png', 57, 57);
 };
 
 function create(){
@@ -43,7 +46,6 @@ function create(){
   spaceKey.onUp.add(changingNet);
 
   PlayerAttack = new Attack(game)
-
   music = game.add.audio('startMusic');
   music.play();
 
@@ -75,6 +77,9 @@ function kill(){
   SuperBadNet.sprite.kill();
   singGood.play();
 }
+function killEnemyAttack(){
+  enemyAttack.kill();
+}
 
 function changingNet(){
   var value = SuperBadNet.sprite.key;
@@ -83,7 +88,6 @@ function changingNet(){
       (rect.x > 423 && rect.x < 443)) {
     PlayerAttack.fireWeapon(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 1));
     if (value === 'enemy'){
-      // singGood.play();
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 100, 'level1Fray');
     }
@@ -98,8 +102,17 @@ function changingNet(){
   if ((rect.x > 120 && rect.x < 170) ||
       (rect.x > 190 && rect.x < 300) ||
       (rect.x > 443 && rect.x < 498)) {
-    console.log("Bad");
+    singGood.stop();
+    singBad.play();
+    enemyAttack = game.add.sprite(150, 80, 'enemyAttack');
+    enemyAttack.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+    enemyAttack.scale.setTo(1.5,4.5);
+    enemyAttack.angle + 500;
+    enemyAttack.animations.play('walk', 5, true);
+
+    game.time.events.add(Phaser.Timer.SECOND * 2, killEnemyAttack, this);
   }
+
 }
 
 
