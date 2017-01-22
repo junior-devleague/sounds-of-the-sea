@@ -28,7 +28,6 @@ var SuperBadNet;
 
 //This is the object which runs the game.
 function preload(){
-  game.load.spritesheet('player', 'assets/Player2Simple.png', 63.5, 64);
   game.load.spritesheet('level1Fray', 'assets/NetFray.png', 64, 63.5);
   game.load.spritesheet('level1Break', 'assets/NetBreak.png', 64, 63.5);
   game.load.audio('sing-success', 'assets/sing-success.wav');
