@@ -1,22 +1,14 @@
 console.log(Phaser);
 //This sets the variable for the spacebar.
+
+var attack;
+var attackBullets;
+var attack_speed = 6;
+var bmd;
+var player;
+var sin;
 var spaceKey;
 var charge = 0;
-var mouse;
-
-var player;
-var attack;
-var charge;
-
-var sin;
-
-//This sets the score to start at -1.
-var score = -1;
-
-var bmd;
-var sin;
-
-
 
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
@@ -30,7 +22,7 @@ function preload(){
 
   game.load.image('background', 'assets/background-underwater.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
-  game.load.image('attack', 'assets/attack.png');
+  game.load.spritesheet('attack', 'assets/attack.png', 32, 32);
 };
 
 function create(){
@@ -44,7 +36,7 @@ function create(){
   //obstacle.anchor.setTo(0,1);
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  //Add enemy sprite to screen
+  //Add enemy sprit  to screen
   enemy = game.add.sprite(500, 100, 'enemy');
   enemy.scale.setTo(4,4);
 
@@ -57,9 +49,16 @@ function create(){
   player.animations.add('moving', [0, 1, 2, 3]);
   player.animations.play('moving', 9, true);
 
+  spaceKey.onUp.add(useAbility);
   music = game.add.audio('startMusic');
 
   music.play();
+
+  attack = game.add.group();
+  attack.callAll('animations.add', 'animations', 'moving', [0, 1, 2, 3], 10, true);
+
+  //  And play them
+  attack.callAll('animations.play', 'animations', 'moving');
 
   //  The frequency (4) = the number of waves
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
@@ -75,23 +74,29 @@ function create(){
   waveLevelNorm();
 };
 
+function useAbility() {
+  // console.log('cow');
+  attack.add(game.add.sprite(player.x, player.y, 'attack', 7));
+}
+
+function handleAttack(){
+  attack.children.forEach( attack => attack.x += attack_speed);
+}
+
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
-    console.log("hi")
+    //console.log("hi")
     charge += 1;
   }
   if (spaceKey.isDown && charge >= 10) {
     charge -= 10;
   }
 
-  useAbility();
+  //useAbility();
   // Draw sinData
 
   drawSin();
+  handleAttack();
 };
-
-function useAbility() {
-  console.log('cow');
-}
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
