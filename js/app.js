@@ -9,7 +9,7 @@ var charge = 0;
 var mouse;
 var attack;
 var charge;
-
+var text;
 var sin;
 
 //This sets the score to start at -1.
@@ -65,7 +65,18 @@ function create(){
   //attack.callAll('animations.add', 'animations', 'moving', [0, 1, 2, 3], 10, true);
   //attack.callAll('animations.play', 'animations', 'moving');
 
+  text = game.add.sprite(200, 200, 'text');
+
+  //  The frequency (4) = the number of waves
+  var data = game.math.sinCosGenerator(800, 200, 1, 4);
 };
+
+
+
+
+function update(){
+  if (spaceKey.isDown === true || charge <= 10) {
+    // console.log("hi")
 
 function useAbility() {
   // console.log('cow');
@@ -79,12 +90,26 @@ function handleAttack(){
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
     //console.log("hi")
+
     charge += 1;
   }
   if (spaceKey.isDown && charge >= 10) {
+
     charge -= 10;
   }
+    setInterval(function(){player = game.add.sprite(900, 300, 'player');},3);
+    charge -= 10
+    function useAbility() {
+      console.log('cow')
 
+    }
+
+};
+
+
+function useAbility() {
+  console.log('cow');
+}
   drawSin();
   handleAttack();
 };
