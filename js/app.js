@@ -47,17 +47,28 @@ function create(){
   music = game.add.audio('startMusic');
   music.play();
 
+  //Create a Wave
+  waveLevelNorm();
+
+  //Create a cursor
+  var rect = game.add.graphics(100, 100);
+  rect.beginFill(0xd0d0d0);
+  rect.lineStyle(2, 0xd0d0d0, 1);
+  rect.drawRect(200, 350, 3, 100);
+  rect.endFill();
+
+  //Animate cursor
+  var tRect = game.add.tween(rect);
+  tRect.to({width: 200, x: 500}, 2500, Phaser.Easing.Linear.None, true, 0, 9999, false).loop(true);
+
+  //  And play them
+  //attack.callAll('animations.add', 'animations', 'moving', [0, 1, 2, 3], 10, true);
+  //attack.callAll('animations.play', 'animations', 'moving');
+
   text = game.add.sprite(200, 200, 'text');
 
   //  The frequency (4) = the number of waves
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
-
-  //  The frequency (4) = the number of waves
-  sin = data.sin;
-  bmd = game.add.bitmapData(800, 600);
-
-  //Create a Wave
-  waveLevelNorm();
 };
 
 
