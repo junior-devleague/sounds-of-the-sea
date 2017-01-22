@@ -30,6 +30,7 @@ function preload(){
   game.load.image('background', 'assets/background-underwater.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.spritesheet('attack', 'assets/attack.png', 32, 32);
+  game.load.image('text', 'assets/text,jpg')
 };
 
 function create(){
@@ -86,7 +87,7 @@ function update(){
 
     charge -= 10;
   }
-    setInterval(function(){player = game.add.sprite(900, 300, 'player');},3);
+    setTimeout(function(){text = game.add.sprite(900, 300, 'text');},3);
     charge -= 10
     function useAbility() {
       console.log('cow')
