@@ -96,9 +96,9 @@ function update(){
 };
 
 
-function useAbility() {
-  console.log('cow');
-}
+// function useAbility() {
+//   console.log('cow');
+// }
   drawSin();
   handleAttack();
 };
