@@ -32,4 +32,10 @@ class GameCharacter {
   takeDamage(damage) {
     this.healthBar.setPercent(damage);
   }
+  changeNet(xPos, yPos, type){
+    this.sprite = game.add.sprite(xPos, yPos, type);
+    this.sprite.animations.add('moving', [0, 1, 2, 3]);
+    this.sprite.animations.play('moving', 5, true);
+    this.sprite.scale.setTo(4,4);
+  }
 }
