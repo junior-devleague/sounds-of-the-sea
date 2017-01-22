@@ -1,4 +1,3 @@
-console.log(Phaser);
 //This sets the variable for the spacebar.
 
 var attack;
