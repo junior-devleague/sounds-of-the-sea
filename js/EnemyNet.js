@@ -1,7 +1,7 @@
 class EnemyNet extends GameCharacter {
   constructor(game, xPos, yPos) {
-    const HEALTH_BAR_XPOS = game.canvas.clientWidth - 20 - 200;
-    const HEALTH_BAR_YPOS = 20;
+    const HEALTH_BAR_XPOS = game.canvas.clientWidth - 20 - 130;
+    const HEALTH_BAR_YPOS = 25;
 
     super(game, xPos, yPos, 'enemy');
     this.sprite.animations.add('moving');
