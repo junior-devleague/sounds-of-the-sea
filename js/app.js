@@ -29,7 +29,6 @@ var SuperBadNet;
 
 //This is the object which runs the game.
 function preload(){
-  game.load.spritesheet('player', 'assets/Player2Simple.png', 63.5, 64);
   game.load.spritesheet('level1Fray', 'assets/NetFray.png', 64, 63.5);
   game.load.spritesheet('level1Break', 'assets/NetBreak.png', 64, 63.5);
   game.load.audio('sing-success', 'assets/sing-success.wav');
@@ -102,26 +101,31 @@ function killEnemyAttack(){
 
 function changingNet(){
   var value = SuperBadNet.sprite.key;
-  if ((rect.x > 170 && rect.x < 190) ||
-      (rect.x > 300 && rect.x < 320) ||
-      (rect.x > 423 && rect.x < 443)) {
+  if ((rect.x > 190 && rect.x < 210) ||
+      (rect.x > 310 && rect.x < 330) ||
+      (rect.x > 440 && rect.x < 460)) {
     PlayerAttack.fireWeapon(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 1));
+    SuperBadNet.takeDamage(30);
     if (value === 'enemy'){
       SuperBadNet.sprite.kill();
-      SuperBadNet.changeNet(500, 100, 'level1Fray');
+      SuperBadNet.changeNet(500, 150, 'level1Fray');
     }
     if (value === 'level1Fray'){
-      // singGood.play();
       SuperBadNet.sprite.kill();
-      SuperBadNet.changeNet(500, 100, 'level1Break');
+      SuperBadNet.changeNet(500, 150, 'level1Break');
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
     }
   }
-  if ((rect.x > 120 && rect.x < 170) ||
-      (rect.x > 190 && rect.x < 300) ||
-      (rect.x > 443 && rect.x < 498)) {
+  if ((rect.x > 120 && rect.x < 190) ||
+      (rect.x > 210 && rect.x < 310) ||
+      (rect.x > 330 && rect.x < 440) ||
+      (rect.x > 460 && rect.x < 500)) {
     singGood.stop();
     singBad.play();
+    GameHero.takeDamage(5);
+    if(enemyAttack){
+      enemyAttack.kill();
+    }
     enemyAttack = game.add.sprite(150, 80, 'enemyAttack');
     enemyAttack.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
     enemyAttack.scale.setTo(1.5,4.5);
@@ -138,8 +142,6 @@ function update(){
 
   //Controls the speed of the background waves
   background.tilePosition.x -= 2.5;
-  GameHero.takeDamage(24);
-  SuperBadNet.takeDamage(10);
 };
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
