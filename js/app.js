@@ -15,7 +15,6 @@ var sin;
 //This sets the score to start at -1.
 var score = -1;
 var bmd;
-var sin;
 
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
@@ -26,7 +25,7 @@ var SuperBadNet;
 //This is the object which runs the game.
 function preload(){
   game.load.spritesheet('player', 'assets/Player2Simple.png', 63, 64);
-  game.load.spritesheet('enemy', 'assets/net.png', 64, 64);
+  game.load.spritesheet('enemy', 'assets/net.png', 64, 63.5);
   game.load.image('background', 'assets/background-underwater.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.spritesheet('attack', 'assets/attack.png', 32, 32);
@@ -34,13 +33,13 @@ function preload(){
 
 function create(){
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
-  GameHero = new Player(game, 300, 500);
+  GameHero = new Player(game, 100, 150);
   SuperBadNet = new EnemyNet(game, 500, 100);
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(useAbility);
 
-  game.add.image(44, 80, 'background');
+  //game.add.image(44, 80, 'background');
 
   attack = game.add.group();
 
@@ -61,7 +60,7 @@ function create(){
 
 function useAbility() {
   // console.log('cow');
-  attack.add(game.add.sprite(GameHero.x, GameHero.y, 'attack', 7));
+  attack.add(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 7));
 }
 
 function handleAttack(){
