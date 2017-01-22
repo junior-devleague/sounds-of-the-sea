@@ -64,6 +64,7 @@ function create(){
 
   createCursor();
   animateCursor(5000);
+
   profileBox();
 
   music = game.add.audio('startMusic');
@@ -113,6 +114,7 @@ function fireWeapon(){
 }
 
 function changingNet(){
+  console.log(rect.x);
   var value = SuperBadNet.sprite.key;
   if ((rect.x > 190 && rect.x < 210) ||
       (rect.x > 310 && rect.x < 330) ||
@@ -143,19 +145,20 @@ function changingNet(){
     GameHero.takeDamage(50);
     cursorSpeed += 10;
     animateCursor(1000);
-    createCursor();
     singBad.play();
     if(enemyAttack){
       GameHero.takeDamage(0);
       enemyAttack.kill();
-      game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
+      game.time.events.add(Phaser.Timer.SECOND * 1, kill, this);
+      game.time.events.add(Phaser.Timer.SECOND * 1, killPlayer, this);
+      game.time.events.add(Phaser.Timer.SECOND * 1, killEnemyAttack, this);
     }
     enemyAttack = game.add.sprite(150, 80, 'enemyAttack');
     enemyAttack.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
     enemyAttack.scale.setTo(1.5,4.5);
     enemyAttack.angle + 500;
     enemyAttack.animations.play('walk', 5, true);
-    game.time.events.add(Phaser.Timer.SECOND * 10, killPlayer, this);
+    // game.time.events.add(Phaser.Timer.SECOND * 10, killPlayer, this);
   }
 };
 
