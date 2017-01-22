@@ -4,6 +4,7 @@ class EnemyNet extends GameCharacter {
     const HEALTH_BAR_YPOS = 25;
 
     super(game, xPos, yPos, 'enemy');
+    this.name = 'Enemy-Net';
     this.sprite.animations.add('moving');
     this.sprite.animations.play('moving', 5, true);
     this.sprite.scale.setTo(4,4);

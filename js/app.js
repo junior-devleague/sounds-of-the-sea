@@ -2,7 +2,7 @@
 
 var attack;
 var attackBullets;
-var attack_speed = 6;
+var attack_speed = 25;
 var spaceKey;
 var charge = 0;
 var mouse;
@@ -43,9 +43,10 @@ function create(){
   //Tiles background image
   background = game.add.tileSprite(0, -25, 800, 700, 'background');
 
-  GameHero = new Player(game, 100, 150);
+  GameHero = new Player(game, 100, 150, playerSprite);
   SuperBadNet = new EnemyNet(game, 500, 150);
 
+  //Handle space bar press and call function on keyup
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(useAbility);
 
@@ -94,10 +95,6 @@ function update(){
   if (spaceKey.isDown && charge >= 10) {
     charge -= 10;
   }
-  setInterval(
-    function(){
-      player = game.add.sprite(900, 300, 'player');
-    },3);
 
   drawSin();
   handleAttack();
