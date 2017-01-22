@@ -104,12 +104,13 @@ function changingNet(){
       (rect.x > 310 && rect.x < 330) ||
       (rect.x > 440 && rect.x < 460)) {
     PlayerAttack.fireWeapon(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 1));
-    SuperBadNet.takeDamage(30);
     if (value === 'enemy'){
+      SuperBadNet.takeDamage(50);
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 150, 'level1Fray');
     }
     if (value === 'level1Fray'){
+      SuperBadNet.takeDamage(0);
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 150, 'level1Break');
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
@@ -121,8 +122,9 @@ function changingNet(){
       (rect.x > 460 && rect.x < 500)) {
     singGood.stop();
     singBad.play();
-    GameHero.takeDamage(5);
+    GameHero.takeDamage(50);
     if(enemyAttack){
+      GameHero.takeDamage(0);
       enemyAttack.kill();
     }
     enemyAttack = game.add.sprite(150, 80, 'enemyAttack');
