@@ -87,7 +87,8 @@ function update(){
   drawSin();
   handleAttack();
 
-  SuperBadNet.takeDamage(1);
+  GameHero.takeDamage(24);
+  SuperBadNet.takeDamage(10);
 };
 
 
