@@ -3,7 +3,11 @@ console.log(Phaser);
 var spaceKey;
 var charge = 0;
 var mouse;
-
+var closeButton = game.make.sprite(pw, -ph, 'close');
+    closeButton.inputEnabled = true;
+    closeButton.input.priorityID = 1;
+    closeButton.input.useHandCursor = true;
+    closeButton.events.onInputDown.add(closeWindow, this);
 var player;
 var attack;
 var charge;
@@ -38,6 +42,7 @@ function create(){
   //game.add.tileSprite(0, 0, 1000, 600, "background")
 
   game.add.image(44, 80, 'background');
+  
   //Add player sprite to screen
   player = game.add.sprite(200, 200, 'player');
   player.scale.setTo(2,2);
@@ -47,7 +52,7 @@ function create(){
   //Add enemy sprite to screen
   enemy = game.add.sprite(500, 100, 'enemy');
   enemy.scale.setTo(4,4);
-
+  
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   //obstacle.scale.setTo(1, 0.2);
@@ -75,6 +80,18 @@ function create(){
   waveLevelNorm();
 };
 
+// function openWindow() {
+
+//     if ((tween !== null && tween.isRunning) || popup.scale.x === 1)
+//     {
+//         return;
+//     }
+    
+//     //  Create a tween that will pop-open the window, but only if it's not already tweening or open
+//     tween = game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+
+// }
+
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
     console.log("hi")
@@ -85,10 +102,20 @@ function update(){
   }
 
   useAbility();
-  // Draw sinData
 
   drawSin();
 };
+// function closeWindow() {
+
+//     if (tween && tween.isRunning || popup.scale.x === 0.1)
+//     {
+//         return;
+//     }
+
+//     //  Create a tween that will close the window, but only if it's not already tweening or closed
+//     tween = game.add.tween(popup.scale).to( { x: 0.1, y: 0.1 }, 500, Phaser.Easing.Elastic.In, true);
+
+// }
 
 function useAbility() {
   console.log('cow');
