@@ -33,13 +33,13 @@ function preload(){
 
 function create(){
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
+  game.add.image(44, 80, 'background');
   GameHero = new Player(game, 100, 150);
   SuperBadNet = new EnemyNet(game, 500, 100);
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(useAbility);
 
-  //game.add.image(44, 80, 'background');
 
   attack = game.add.group();
 
