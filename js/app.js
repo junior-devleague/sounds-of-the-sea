@@ -48,9 +48,10 @@ function create(){
   //Tiles background image
   background = game.add.tileSprite(0, -25, 800, 700, 'background');
 
-  GameHero = new Player(game, 100, 150);
+  GameHero = new Player(game, 100, 150, playerSprite);
   SuperBadNet = new EnemyNet(game, 500, 150);
 
+  //Handle space bar press and call function on keyup
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(changingNet);
 
