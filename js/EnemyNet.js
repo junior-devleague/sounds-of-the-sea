@@ -5,7 +5,7 @@ class EnemyNet extends GameCharacter {
 
     super(game, xPos, yPos, 'enemy');
 
-    this.name = 'Enemy Nets';
+    this.name = 'Human Nets';
     this.sprite.animations.add('moving');
     this.sprite.animations.play('moving', 5, true);
     this.sprite.scale.setTo(4,4);
