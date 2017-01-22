@@ -16,7 +16,7 @@ class GameCharacter {
       animationDuration: 200
     };
 
-    this.healthBarTextConfig = { font: "24px Arial Black", fill: "#ff0044", align: "left"};
+    this.healthBarTextConfig = { font: "24px Averia Serif Libre", fill: "#ff0044", align: "left"};
     this.healthBarText;
     this.sprite = game.add.sprite(xPos, yPos, type);
   }
