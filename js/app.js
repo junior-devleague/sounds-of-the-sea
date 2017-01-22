@@ -20,8 +20,7 @@ var rect;
 var score = -1;
 var sin;
 var spaceKey;
-// var speed = 50;
-var spritePlayers = ['GeneSharkman', 'Lura', 'Nat', 'Sheena', 'Player3', 'Christie'];
+var spritePlayers = ['GeneSharkman', 'Lura', 'Nat', 'Sheena', 'Christie', 'Jason'];
 var SuperBadNet;
 var text;
 var walk;
@@ -37,13 +36,20 @@ function preload(){
   game.load.spritesheet('enemyAttack', 'assets/EnemyAttack.png', 57, 57);
   playerSprite = spritePlayers[Math.floor(Math.random() * spritePlayers.length)];
   var choseSprite = 'assets/' + playerSprite + ".png";
+<<<<<<< HEAD
+  game.load.spritesheet('player', choseSprite, 63, 64);
+  var choseProfile = 'assets/' + playerSprite + "Profile.png";
+  game.load.spritesheet('profile', choseProfile, 55, 58);
+  game.load.spritesheet('sharkboy', 'assets/GeneSharkmanProfile.png', 60, 60);
+  game.load.spritesheet('mainPlayer', 'assets/Profile.png', 60, 60);
+=======
   game.load.spritesheet('player', choseSprite, 64, 64);
+>>>>>>> master
   game.load.spritesheet('enemy', 'assets/Net2.png', 64, 63.5);
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
-  game.load.spritesheet('profileF', 'assets/Profile.png', 55, 58);
-  game.load.spritesheet('profileB', 'assets/ProfileBoy.png', 55, 58);
+  //game.load.spritesheet('profileB', 'assets/ProfileBoy.png', 55, 58);
 };
 
 function create(){
