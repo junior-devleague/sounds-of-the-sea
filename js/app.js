@@ -30,6 +30,7 @@ function preload(){
   game.load.spritesheet('level1Fray', 'assets/NetFray.png', 64, 63.5);
   game.load.spritesheet('level1Break', 'assets/NetBreak.png', 64, 63.5);
   game.load.audio('sing-success', 'assets/sing-success.wav');
+  game.load.audio('sing-failure', 'assets/sing-fail.wav');
 };
 
 function create(){
@@ -47,7 +48,7 @@ function create(){
   music.play();
 
   singGood = game.add.audio('sing-success');
-
+  singBad = game.add.audio('sing-failure');
   //Create a Wave
   waveLevelNorm();
 
@@ -60,7 +61,7 @@ function create(){
 
   //Animate cursor
   var tRect = game.add.tween(rect);
-  tRect.to({width: 200, x: 500}, 10000, Phaser.Easing.Linear.None, true, 0, 9999, false).loop(true);
+  tRect.to({width: 200, x: 500}, 1200, Phaser.Easing.Linear.None, true, 0, 9999, false).loop(true);
 
   //  The frequency (4) = the number of waves
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
@@ -70,8 +71,9 @@ function handleAttack(){
   PlayerAttack.animateFire();
 }
 
-function hi(){
+function kill(){
   SuperBadNet.sprite.kill();
+  singGood.play();
 }
 
 function changingNet(){
@@ -81,15 +83,15 @@ function changingNet(){
       (rect.x > 423 && rect.x < 443)) {
     PlayerAttack.fireWeapon(game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y + 55, 'attack', 1));
     if (value === 'enemy'){
-      singGood.play();
+      // singGood.play();
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 100, 'level1Fray');
     }
     if (value === 'level1Fray'){
-      singGood.play();
+      // singGood.play();
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 100, 'level1Break');
-      game.time.events.add(Phaser.Timer.SECOND * 2, hi, this);
+      game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
     }
   }
   console.log(rect.x);
@@ -97,17 +99,6 @@ function changingNet(){
       (rect.x > 190 && rect.x < 300) ||
       (rect.x > 443 && rect.x < 498)) {
     console.log("Bad");
-    // if (value === 'enemy'){
-    //   singGood.play();
-    //   SuperBadNet.sprite.kill();
-    //   SuperBadNet.changeNet(500, 100, 'level1Fray');
-    // }
-    // if (value === 'level1Fray'){
-    //   singGood.play();
-    //   SuperBadNet.sprite.kill();
-    //   SuperBadNet.changeNet(500, 100, 'level1Break');
-    //   game.time.events.add(Phaser.Timer.SECOND * 2, hi, this);
-    // }
   }
 }
 
