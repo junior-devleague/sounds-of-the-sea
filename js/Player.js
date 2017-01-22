@@ -1,7 +1,7 @@
 class Player extends GameCharacter {
   constructor(game, xPos, yPos) {
-    const HEALTH_BAR_XPOS = game.canvas.clientLeft + 20;
-    const HEALTH_BAR_YPOS = 20;
+    const HEALTH_BAR_XPOS = game.canvas.clientLeft + 150;
+    const HEALTH_BAR_YPOS = 25;
 
     super(game, xPos, yPos, 'player');
 
