@@ -6,6 +6,8 @@ var mouse;
 
 var player;
 
+var sin;
+
 //This sets the score to start at -1.
 var score = -1;
 
@@ -47,6 +49,9 @@ function create(){
   player.animations.add('moving', [6, 7, 8]);
   player.animations.play('moving', 9, true);
   //obstacle.anchor.setTo(0,1);
+
+  // //Create a Wave
+  waveLevelNorm();
 };
 
 function update(){
@@ -60,10 +65,10 @@ function update(){
     console.log('cow')
 
   }
-  useAbility()
-  }
-
+  useAbility();
+  // // Draw sinData
+  drawSin();
 
 };
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
+var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
