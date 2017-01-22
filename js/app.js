@@ -7,9 +7,12 @@ var player;
 var attack;
 var charge;
 
+var sin;
+
+
+
 //This sets the score to start at -1.
 var score = -1;
-
 var bmd;
 var sin;
 
@@ -30,11 +33,20 @@ function preload(){
 
 function create(){
   game.add.image(44, 80, 'background');
-  //Create single GameHero Player instance
-  GameHero = new Player(game, 200, 200);
 
   //Add enemy sprite to screen
+
+  enemy = game.add.sprite(500, 100, 'enemy');
+  enemy.scale.setTo(4,4);
+
+  spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+  //obstacle.scale.setTo(1, 0.2);
+  enemy.animations.add('moving', [0, 1, 2, 3]);
+  enemy.animations.play('moving', 5, true);
+
   SuperBadNet = new EnemyNet(game, 500, 100);
+
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -54,21 +66,7 @@ function create(){
   waveLevelNorm();
 };
 
-<<<<<<< Updated upstream
-// function openWindow() {
 
-//     if ((tween !== null && tween.isRunning) || popup.scale.x === 1)
-//     {
-//         return;
-//     }
-
-//     //  Create a tween that will pop-open the window, but only if it's not already tweening or open
-//     tween = game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
-
-// }
-
-=======
->>>>>>> Stashed changes
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
     console.log("hi")
