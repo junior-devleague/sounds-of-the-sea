@@ -21,7 +21,7 @@ var score = -1;
 var sin;
 var spaceKey;
 // var speed = 50;
-var spritePlayers = ['Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'Christie'];
+var spritePlayers = ['GeneSharkman', 'Lura', 'Nat', 'Sheena', 'Christie', 'Jason'];
 var SuperBadNet;
 var text;
 var walk;
@@ -40,7 +40,8 @@ function preload(){
   game.load.spritesheet('player', choseSprite, 63, 64);
   var choseProfile = 'assets/' + playerSprite + "Profile.png";
   game.load.spritesheet('profile', choseProfile, 55, 58);
-  game.load.spritesheet('sharkboy', 'assets/AohmsenProfile.png', 60, 60);
+  game.load.spritesheet('sharkboy', 'assets/GeneSharkmanProfile.png', 60, 60);
+  game.load.spritesheet('mainPlayer', 'assets/Profile.png', 60, 60);
   game.load.spritesheet('enemy', 'assets/Net2.png', 64, 63.5);
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');

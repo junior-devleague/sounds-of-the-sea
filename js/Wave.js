@@ -59,7 +59,7 @@ function profileBox(){
     prof = game.add.sprite(-12, -7, 'profile', 1);
     prof.scale.setTo(1.3,1.3);
   }
-  if (text === "Aohmsen") {
+  if (text === "GeneSharkman") {
     prof = game.add.sprite(-7, 4, 'sharkboy', 1);
     prof.scale.setTo(1.3,1.3);
   }
@@ -71,12 +71,13 @@ function profileBox(){
     prof = game.add.sprite(-8, -6, 'profile', 1);
     prof.scale.setTo(1.2,1.2);
   }
-  // if (text === "Lura"){
-  //   prof = game.add.sprite(-10, -9, 'profile', 1);
-  //   prof.scale.setTo(1.3,1.3);
-  // }
-  if (text === "Player3"){
-    console.log("hi");
+  if (text === "Player2"){
+    prof = game.add.sprite(-7, -11, 'mainPlayer', 1);
+    prof.scale.setTo(1.3,1.3);
+  }
+  if (text === "Jason"){
+    prof = game.add.sprite(-20, -7, 'profile', 1);
+    prof.scale.setTo(1.5,1.5);
   }
   //prof = game.add.sprite(0, 0, 'profile', 1);
   // prof.scale.setTo(1.3,1.3);
