@@ -16,7 +16,7 @@ class GameCharacter {
       animationDuration: 200
     };
 
-    this.healthBarTextConfig = { font: "24px Arial", fill: "#ff0044", align: "left"};
+    this.healthBarTextConfig = { font: "24px Phosphate", fill: "#ff0044", align: "left"};
     this.healthBarText;
     this.sprite = game.add.sprite(xPos, yPos, type);
   }
@@ -26,7 +26,7 @@ class GameCharacter {
     this.healthBarConfig.y = yPos;
     this.healthBar = new HealthBar(game, this.healthBarConfig);
 
-    this.healthBarText = game.add.text(xPos-50, yPos + 20, this.name, this.healthBarTextConfig);
+    this.healthBarText = game.add.text(xPos-98, 10, this.name, this.healthBarTextConfig);
   }
 
   takeDamage(damage) {
