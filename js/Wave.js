@@ -15,10 +15,10 @@ function waveLevelHigh(){
 
 function drawSin(){
   // // Draw sinData
-  var gfx = game.add.graphics(387, 500);
+  var gfx = game.add.graphics(395, 500);
   gfx.lineStyle(3, 0x24efdc);
   for (var i = 0; i < sin.length; i ++) {
-    gfx.lineTo(22 + i, 40 + sin[i]);
+    gfx.lineTo(22 + i, 18 + sin[i]);
 
   }
 };
@@ -28,8 +28,17 @@ function waveBox(){
   var waveBox = game.add.graphics(100, 100);
   waveBox.beginFill(0xf3faff);
   waveBox.lineStyle(2, 0x000000, 1);
-  waveBox.drawRect(285, 390, 405, 100);
+  waveBox.drawRect(293, 370, 405, 100);
   waveBox.endFill();
+
+  var sonicBox = game.add.graphics(100, 100);
+  sonicBox.beginFill(0x000000);
+  sonicBox.lineStyle(2, 0x000000, 1);
+  sonicBox.drawRect(293, 468, 405, 30);
+  sonicBox.endFill();
+  var text = "Sonic Wave";
+  var style = { font: "24px Arial Black", fill: "#ffffff", align: "center" };
+  var t = game.add.text(520, 570, text, style);
 }
 
 //Create profile box

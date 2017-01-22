@@ -70,7 +70,7 @@ function create(){
   rect = game.add.graphics(100, 100);
   rect.beginFill(0xd0d0d0);
   rect.lineStyle(2, 0xd0d0d0, 1);
-  rect.drawRect(285, 392, 3, 96);
+  rect.drawRect(293, 372, 3, 94);
   rect.endFill();
 
   //Animate cursor
