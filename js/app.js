@@ -1,11 +1,17 @@
+console.log(Phaser);
 //This sets the variable for the spacebar.
 var spaceKey;
+var charge = 0;
+var mouse;
 
 var player;
 
 //This sets the score to start at -1.
 var score = -1;
 
+spaceKey.onDown.add(useAbility, this);...function useAbility(this) {
+    console.log('cow')
+};
 
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
@@ -30,7 +36,8 @@ function create(){
   //obstacle.scale.setTo(1,0.2);
   //obstacle.anchor.setTo(0,1);
 
-
+  spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  spaceKey = game.input.mouse.addKey(Phaser.Keyboard.MOUSE);
   //Add enemy sprite to screen
   enemy = game.add.sprite(400, 300, 'enemy');
 
@@ -45,6 +52,15 @@ function create(){
 };
 
 function update(){
+  if (spaceKey.isDown === true) {
+  console.log("hi")  // charge++;
+  }
+  if (spaceKey.isDown && charge <= 10) {
+    // charge = charge
+
+  }
+
+  // console.log(charge)
 
 };
 
