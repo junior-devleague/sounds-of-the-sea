@@ -9,12 +9,16 @@ var closeButton = game.make.sprite(pw, -ph, 'close');
     closeButton.input.useHandCursor = true;
     closeButton.events.onInputDown.add(closeWindow, this);
 var player;
+var attack;
+var charge;
 
 var sin;
 
 //This sets the score to start at -1.
 var score = -1;
 
+var bmd;
+var sin;
 
 
 
@@ -24,11 +28,13 @@ var GAME_CONTAINER_ID = 'gameDiv';
 
 //This is the object which runs the game.
 function preload(){
-  game.load.spritesheet('player', 'assets/player.png', 55, 48);
+  game.load.spritesheet('player', 'assets/Player2Simple.png', 63, 64);
   //game.load.image('enemy', 'assets/ship.png');
-  game.load.spritesheet('enemy', 'assets/ship.png', 50, 45);
+  game.load.spritesheet('enemy', 'assets/net.png', 64, 64);
 
   game.load.image('background', 'assets/background-underwater.png');
+  game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
+  game.load.image('attack', 'assets/attack.png');
 };
 
 function create(){
@@ -38,20 +44,36 @@ function create(){
   game.add.image(44, 80, 'background');
   
   //Add player sprite to screen
-  player = game.add.sprite(200, 300, 'player');
-  //obstacle.scale.setTo(1,0.2);
+  player = game.add.sprite(200, 200, 'player');
+  player.scale.setTo(2,2);
   //obstacle.anchor.setTo(0,1);
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   //Add enemy sprite to screen
-  enemy = game.add.sprite(400, 300, 'enemy');
+  enemy = game.add.sprite(500, 100, 'enemy');
+  enemy.scale.setTo(4,4);
+  
+  spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   //obstacle.scale.setTo(1, 0.2);
-  enemy.animations.add('moving', [3, 4, 5]);
+  enemy.animations.add('moving', [0, 1, 2, 3]);
   enemy.animations.play('moving', 5, true);
 
-  player.animations.add('moving', [6, 7, 8]);
+  player.animations.add('moving', [0, 1, 2, 3]);
   player.animations.play('moving', 9, true);
+
+  music = game.add.audio('startMusic');
+
+  music.play();
+
+  //  The frequency (4) = the number of waves
+  var data = game.math.sinCosGenerator(800, 200, 1, 4);
+
+  sin = data.sin;
+
+    //  Just so we can see the data
+  bmd = game.add.bitmapData(800, 600);
+
   //obstacle.anchor.setTo(0,1);
 
   // //Create a Wave
@@ -72,19 +94,16 @@ function create(){
 
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
-  console.log("hi")
-  charge += 1;
+    console.log("hi")
+    charge += 1;
   }
   if (spaceKey.isDown && charge >= 10) {
-    charge -= 10
-    function useAbility() {
-    console.log('cow')
-
+    charge -= 10;
   }
-  useAbility();
-  // // // Draw sinData
-  // drawSin();
 
+  useAbility();
+
+  drawSin();
 };
 // function closeWindow() {
 
@@ -97,5 +116,9 @@ function update(){
 //     tween = game.add.tween(popup.scale).to( { x: 0.1, y: 0.1 }, 500, Phaser.Easing.Elastic.In, true);
 
 // }
+
+function useAbility() {
+  console.log('cow');
+}
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
