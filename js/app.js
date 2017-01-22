@@ -4,6 +4,7 @@ var attack_speed = 6;
 var background;
 var bmd;
 var bounds;
+var cursorSpeed = 2.5;
 var enemyAttack;
 var GAME_CONTAINER_ID = 'gameDiv';
 var GAME_HEIGHT = 600;
@@ -19,6 +20,7 @@ var rect;
 var score = -1;
 var sin;
 var spaceKey;
+// var speed = 50;
 var spritePlayers = ['Player2Simple', 'Aohmsen', 'Lura', 'Nat', 'Sheena', 'Player3', 'PlayerBoy'];
 var SuperBadNet;
 var text;
@@ -27,15 +29,16 @@ var walk;
 
 //This is the object which runs the game.
 function preload(){
-  game.load.spritesheet('level1Fray', 'assets/NetFray.png', 64, 63.5);
-  game.load.spritesheet('level1Break', 'assets/NetBreak.png', 64, 63.5);
+  game.load.spritesheet('level1Fray', 'assets/Net2Fray.png', 64, 63.5);
+  game.load.spritesheet('level1Sway', 'assets/Net2Sway.png', 64, 63.5);
+  game.load.spritesheet('level1Break', 'assets/Net2Break.png', 64, 63.5);
   game.load.audio('sing-success', 'assets/sing-success.wav');
   game.load.audio('sing-failure', 'assets/sing-fail.wav');
   game.load.spritesheet('enemyAttack', 'assets/EnemyAttack.png', 57, 57);
   playerSprite = spritePlayers[Math.floor(Math.random() * spritePlayers.length)];
   var choseSprite = 'assets/' + playerSprite + ".png";
   game.load.spritesheet('player', choseSprite, 63, 64);
-  game.load.spritesheet('enemy', 'assets/Net.png', 64, 63.5);
+  game.load.spritesheet('enemy', 'assets/Net2.png', 64, 63.5);
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
@@ -60,13 +63,7 @@ function create(){
   waveBox();
 
   createCursor();
-  animateCursor();
-
-  // //Animate cursor
-  // var tRect = game.add.tween(rect);
-  // tRect.to({x: 500}, 5000, Phaser.Easing.Linear.None, true).loop('true');
-
-  //Create profile box
+  animateCursor(5000);
   profileBox();
 
   music = game.add.audio('startMusic');
@@ -86,9 +83,9 @@ function createCursor(){
   rect.endFill();
 }
 
-function animateCursor(){
+function animateCursor(speed){
   var tRect = game.add.tween(rect);
-  tRect.to({x: 500}, 5000, Phaser.Easing.Linear.None, true).loop('true');
+  tRect.to({x: 500}, speed, Phaser.Easing.Linear.None, true).loop('true');
 }
 
 function handleAttack(){
@@ -103,6 +100,10 @@ function kill(){
 function killEnemyAttack(){
   enemyAttack.kill();
 };
+
+function killPlayer(){
+  GameHero.sprite.kill();
+}
 
 function fireWeapon(){
   playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 370, 'attack');
@@ -125,6 +126,11 @@ function changingNet(){
     if (value === 'level1Fray'){
       SuperBadNet.takeDamage(50 * .5);
       SuperBadNet.sprite.kill();
+      SuperBadNet.changeNet(500, 150, 'level1Sway');
+    }
+    if (value === 'level1Sway'){
+      SuperBadNet.takeDamage(0);
+      SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 150, 'level1Break');
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
     }
@@ -135,21 +141,21 @@ function changingNet(){
       (rect.x > 460 && rect.x < 500)) {
     singGood.stop();
     GameHero.takeDamage(50);
-    waveLevelMid();
-    waveBox();
+    cursorSpeed += 10;
+    animateCursor(1000);
     createCursor();
-    animateCursor();
     singBad.play();
     if(enemyAttack){
       GameHero.takeDamage(0);
       enemyAttack.kill();
+      game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
     }
     enemyAttack = game.add.sprite(150, 80, 'enemyAttack');
     enemyAttack.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
     enemyAttack.scale.setTo(1.5,4.5);
     enemyAttack.angle + 500;
     enemyAttack.animations.play('walk', 5, true);
-    game.time.events.add(Phaser.Timer.SECOND * 2, killEnemyAttack, this);
+    game.time.events.add(Phaser.Timer.SECOND * 10, killPlayer, this);
   }
 };
 
@@ -158,7 +164,7 @@ function update(){
   handleAttack();
 
   //Controls the speed of the background waves
-  background.tilePosition.x -= 2.5;
+  background.tilePosition.x -= cursorSpeed;
   playerAttack.x += 11;
 };
 
