@@ -28,7 +28,7 @@ function preload(){
   game.load.spritesheet('enemy', 'assets/net.png', 64, 63.5);
   game.load.image('background', 'assets/background-underwater.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
-  game.load.spritesheet('attack', 'assets/EnemyAttack.png', 32, 32);
+  game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
 };
 
 function create(){
@@ -39,7 +39,6 @@ function create(){
 
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   spaceKey.onUp.add(useAbility);
-
 
   attack = game.add.group();
 
@@ -60,7 +59,7 @@ function create(){
   var tRect = game.add.tween(rect);
   tRect.to({width: 200, x: 500}, 2500, Phaser.Easing.Linear.None, true, 0, 9999, false).loop(true);
 
-  text = game.add.sprite(200, 200, 'text');
+  //text = game.add.sprite(200, 200, 'text');
 
   //  The frequency (4) = the number of waves
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
@@ -81,7 +80,6 @@ function update(){
     charge += 1;
   }
   if (spaceKey.isDown && charge >= 10) {
-
     charge -= 10;
   }
   setInterval(
