@@ -20,6 +20,5 @@ function drawSin(){
   for (var i = 0; i < sin.length; i ++) {
     gfx.lineTo(300 + i, 500 + sin[i]);
   }
-
 };
 

@@ -6,14 +6,21 @@ var mouse;
 var player;
 var attack;
 var charge;
+
 var sin;
+
+
+
 //This sets the score to start at -1.
 var score = -1;
 var bmd;
 var sin;
+
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
 var GAME_CONTAINER_ID = 'gameDiv';
+var GameHero;
+var SuperBadNet;
 
 //This is the object which runs the game.
 function preload(){
@@ -25,18 +32,10 @@ function preload(){
 };
 
 function create(){
-
-  //game.add.tileSprite(0, 0, 1000, 600, "background")
-
   game.add.image(44, 80, 'background');
 
-  //Add player sprite to screen
-  player = game.add.sprite(200, 200, 'player');
-  player.scale.setTo(2,2);
-  //obstacle.anchor.setTo(0,1);
-
-  spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   //Add enemy sprite to screen
+
   enemy = game.add.sprite(500, 100, 'enemy');
   enemy.scale.setTo(4,4);
 
@@ -46,8 +45,10 @@ function create(){
   enemy.animations.add('moving', [0, 1, 2, 3]);
   enemy.animations.play('moving', 5, true);
 
-  player.animations.add('moving', [0, 1, 2, 3]);
-  player.animations.play('moving', 9, true);
+  SuperBadNet = new EnemyNet(game, 500, 100);
+
+
+  spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   music = game.add.audio('startMusic');
 
@@ -61,11 +62,10 @@ function create(){
     //  Just so we can see the data
   bmd = game.add.bitmapData(800, 600);
 
-  //obstacle.anchor.setTo(0,1);
-
-  // //Create a Wave
+  //Create a Wave
   waveLevelNorm();
 };
+
 
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
