@@ -114,7 +114,6 @@ function fireWeapon(){
 }
 
 function changingNet(){
-  console.log(rect.x);
   var value = SuperBadNet.sprite.key;
   if ((rect.x > 190 && rect.x < 210) ||
       (rect.x > 310 && rect.x < 330) ||
@@ -144,7 +143,7 @@ function changingNet(){
     singGood.stop();
     GameHero.takeDamage(50);
     cursorSpeed += 10;
-    animateCursor(1000);
+    animateCursor(2000);
     singBad.play();
     if(enemyAttack){
       GameHero.takeDamage(0);
@@ -158,7 +157,8 @@ function changingNet(){
     enemyAttack.scale.setTo(1.5,4.5);
     enemyAttack.angle + 500;
     enemyAttack.animations.play('walk', 5, true);
-    // game.time.events.add(Phaser.Timer.SECOND * 10, killPlayer, this);
+    game.time.events.add(Phaser.Timer.SECOND * 1, killEnemyAttack, this);
+    // enemyAttack.kill();
   }
 };
 
