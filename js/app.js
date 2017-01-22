@@ -32,6 +32,7 @@ function create(){
   //game.add.tileSprite(0, 0, 1000, 600, "background")
 
   game.add.image(44, 80, 'background');
+  
   //Add player sprite to screen
   player = game.add.sprite(200, 300, 'player');
   //obstacle.scale.setTo(1,0.2);
@@ -40,7 +41,6 @@ function create(){
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   //Add enemy sprite to screen
   enemy = game.add.sprite(400, 300, 'enemy');
-
 
   //obstacle.scale.setTo(1, 0.2);
   enemy.animations.add('moving', [3, 4, 5]);
