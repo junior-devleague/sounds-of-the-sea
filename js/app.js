@@ -34,6 +34,8 @@ function preload(){
 };
 
 function create(){
+  setTimeout(text = game.add.sprite(900, 300, 'text'); 30000);
+
   var data = game.math.sinCosGenerator(800, 200, 1, 4);
   GameHero = new Player(game, 300, 500);
   SuperBadNet = new EnemyNet(game, 500, 100);
@@ -65,6 +67,11 @@ function create(){
 
 
 function update(){
+    function useAbility() {
+    console.log('cow')
+
+    }
+
   if (spaceKey.isDown === true || charge <= 10) {
     // console.log("hi")
 
@@ -86,13 +93,11 @@ function update(){
   if (spaceKey.isDown && charge >= 10) {
 
     charge -= 10;
+    useAbility()
   }
-    setTimeout(function(){text = game.add.sprite(900, 300, 'text');},3);
+    
     charge -= 10
-    function useAbility() {
-      console.log('cow')
 
-    }
 
 };
 
