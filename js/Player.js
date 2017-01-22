@@ -5,6 +5,7 @@ class Player extends GameCharacter {
 
     super(game, xPos, yPos, 'player');
 
+    //this.sprite.animations.add('moving', [0, 1, 2, 3]);
     this.sprite.animations.add('moving');
     this.sprite.animations.play('moving', 9, true);
     this.sprite.scale.setTo(2,2);
