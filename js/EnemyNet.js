@@ -1,7 +1,7 @@
 class EnemyNet extends GameCharacter {
   constructor(game, xPos, yPos) {
-    const HEALTH_BAR_XPOS = game.canvas.clientWidth - 20 - 130;
-    const HEALTH_BAR_YPOS = 25;
+    const HEALTH_BAR_XPOS = game.canvas.clientWidth - 20 - 88;
+    const HEALTH_BAR_YPOS = 50;
 
     super(game, xPos, yPos, 'enemy');
 
