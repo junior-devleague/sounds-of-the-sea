@@ -59,16 +59,12 @@ function create(){
   waveLevelNorm();
   waveBox();
 
-  //Create a cursor
-  rect = game.add.graphics(100, 100);
-  rect.beginFill(0xd0d0d0);
-  rect.lineStyle(2, 0xd0d0d0, 1);
-  rect.drawRect(293, 372, 3, 94);
-  rect.endFill();
+  createCursor();
+  animateCursor();
 
-  //Animate cursor
-  var tRect = game.add.tween(rect);
-  tRect.to({x: 500}, 5000, Phaser.Easing.Linear.None, true).loop('true');
+  // //Animate cursor
+  // var tRect = game.add.tween(rect);
+  // tRect.to({x: 500}, 5000, Phaser.Easing.Linear.None, true).loop('true');
 
   //Create profile box
   profileBox();
@@ -81,6 +77,19 @@ function create(){
 
   playerAttack = game.add.sprite(GameHero.sprite.x + 100, GameHero.sprite.y - 190, 'attack');
 };
+
+function createCursor(){
+  rect = game.add.graphics(100, 100);
+  rect.beginFill(0xd0d0d0);
+  rect.lineStyle(2, 0xd0d0d0, 1);
+  rect.drawRect(293, 372, 3, 94);
+  rect.endFill();
+}
+
+function animateCursor(){
+  var tRect = game.add.tween(rect);
+  tRect.to({x: 500}, 5000, Phaser.Easing.Linear.None, true).loop('true');
+}
 
 function handleAttack(){
   PlayerAttack.animateFire();
@@ -125,8 +134,12 @@ function changingNet(){
       (rect.x > 330 && rect.x < 440) ||
       (rect.x > 460 && rect.x < 500)) {
     singGood.stop();
-    singBad.play();
     GameHero.takeDamage(50);
+    waveLevelMid();
+    waveBox();
+    createCursor();
+    animateCursor();
+    singBad.play();
     if(enemyAttack){
       GameHero.takeDamage(0);
       enemyAttack.kill();
