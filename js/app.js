@@ -3,7 +3,11 @@ console.log(Phaser);
 var spaceKey;
 var charge = 0;
 var mouse;
-
+var closeButton = game.make.sprite(pw, -ph, 'close');
+    closeButton.inputEnabled = true;
+    closeButton.input.priorityID = 1;
+    closeButton.input.useHandCursor = true;
+    closeButton.events.onInputDown.add(closeWindow, this);
 var player;
 
 var sin;
@@ -54,6 +58,18 @@ function create(){
   waveLevelNorm();
 };
 
+// function openWindow() {
+
+//     if ((tween !== null && tween.isRunning) || popup.scale.x === 1)
+//     {
+//         return;
+//     }
+    
+//     //  Create a tween that will pop-open the window, but only if it's not already tweening or open
+//     tween = game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+
+// }
+
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
   console.log("hi")
@@ -66,9 +82,20 @@ function update(){
 
   }
   useAbility();
-  // // Draw sinData
-  drawSin();
+  // // // Draw sinData
+  // drawSin();
 
 };
+// function closeWindow() {
+
+//     if (tween && tween.isRunning || popup.scale.x === 0.1)
+//     {
+//         return;
+//     }
+
+//     //  Create a tween that will close the window, but only if it's not already tweening or closed
+//     tween = game.add.tween(popup.scale).to( { x: 0.1, y: 0.1 }, 500, Phaser.Easing.Elastic.In, true);
+
+// }
 
 var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
