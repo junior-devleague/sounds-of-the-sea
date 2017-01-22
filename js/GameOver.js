@@ -19,3 +19,11 @@ function humanTalk(){
   var style = { font: "14px Arial", fill: "#000000", align: "center"};
   var text = game.add.text(445, 20, humanText, style);
 }
+
+function win(){
+  game.stage.backgroundColor = "#000000";
+  var endTextBox = game.add.graphics(100, 100);
+  var endText = "Awesome! \n You saved all the sea life.";
+  var style = { font: "32px Averia Serif Libre", fill: "#ffffff", align: "center"};
+  var text = game.add.text(250, 160, endText, style);
+}

@@ -52,7 +52,7 @@ function create(){
 
   GameHero = new Player(game, 100, 200, playerSprite);
   SuperBadNet = new EnemyNet(game, 500, 150);
-  PlayerAttack = new Attack(game)
+  PlayerAttack = new Attack(game);
 
   //Handle space bar press and call function on keyup
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -135,6 +135,7 @@ function changingNet(){
       SuperBadNet.sprite.kill();
       SuperBadNet.changeNet(500, 150, 'level1Break');
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
+      game.time.events.add(Phaser.Timer.SECOND * 2.5, win, this);
     }
   }
   if ((rect.x > 120 && rect.x < 190) ||
