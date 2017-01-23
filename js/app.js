@@ -20,8 +20,7 @@ var rect;
 var score = -1;
 var sin;
 var spaceKey;
-// var speed = 50;
-var spritePlayers = ['GeneSharkman', 'Lura', 'Nat', 'Sheena', 'Player3', 'Christie'];
+var spritePlayers = ['GeneSharkman', 'Lura', 'Nat', 'Sheena', 'Christie', 'Jason'];
 var SuperBadNet;
 var text;
 var walk;
@@ -146,7 +145,6 @@ Main.prototype = {
     if ((rect.x > 190 && rect.x < 220) ||
         (rect.x > 320 && rect.x < 340) ||
         (rect.x > 450 && rect.x < 470)) {
-      console.log(this);
       this.fireWeapon();
       if (value === 'enemy'){
         SuperBadNet.takeDamage(100 * .5);
