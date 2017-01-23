@@ -18,9 +18,7 @@
 
 ###The Team:###
 
-<p align="center">
-  <img src="https://github.com/sounds-of-the-sea/asssets/TeamPhoto.png" />
-</p>
+![](https://github.com/junior-devleague/sounds-of-the-sea/blob/master/assets/TeamPhoto.png)
 
 [Luc](https://github.com/lucl310)<br>
 [Lura](https://github.com/llooper21)<br>
