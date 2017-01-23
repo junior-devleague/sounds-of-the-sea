@@ -1,7 +1,21 @@
-# sounds-of-the-sea
-Global Game Jam 2017 - Sounds of The Sea
+# Sounds of the Sea
+##Global Game Jam 2017 - Sounds of The Sea##
 
 Welcome to sounds of the sea! Here are the instructions on how to play:
 
-Press the spacebar when the bar reaches the top of the wave. If you hit, the net takes damage! If you miss, the Ship shoots spears at you, and you take damage.
-The two yellow bars at the top are your and the enemy's health. The face on the top left is your character, along with their name. When your health goes down, part of the bar turns red. All red means that you died.
+* Press the spacebar when the bar reaches the top of the wave. If you hit, the net takes damage! If you miss, you'll get hit with spears, and you take damage.
+
+* The two yellow bars at the top are the health bars for you and the enemy. The face on the top left is your character, along with their name.
+
+* When your health goes down, part of the bar turns red.
+
+* All red means that you died.
+
+###The Team###
+[Luc](https://github.com/lucl310)<br>
+[Lura](https://github.com/llooper21)<br>
+[Jason](https://github.com/jaywon)<br>
+[Alan](https://github.com/spacetoastcoasttocoast)<br>
+[Christie](https://github.com/creindle)<br>
+[Sheena](https://github.com/sogalutira)<br>
+[Nat](https://github.com/nat-nat33)
