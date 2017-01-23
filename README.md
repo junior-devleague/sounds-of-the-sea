@@ -1,7 +1,7 @@
 # Sounds of the Sea
 ##Global Game Jam 2017 - Sounds of The Sea##
 
-Welcome to sounds of the sea! Here are the instructions on how to play:
+###How to play:###
 
 * Press the spacebar when the bar reaches the top of the wave. If you hit, the net takes damage! If you miss, you'll get hit with spears, and you take damage.
 
