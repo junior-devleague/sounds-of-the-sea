@@ -1,6 +1,8 @@
 # Sounds of the Sea
 ##Global Game Jam 2017 - Sounds of The Sea##
 
+
+
 ###How to play:###
 
 * Press the spacebar when the bar reaches the top of the wave. If you hit, the net takes damage! If you miss, you'll get hit with spears, and you take damage.
@@ -11,7 +13,15 @@
 
 * All red means that you died.
 
-###The Team###
+<br>
+[Click to play](https://junior-devleague.github.io/sounds-of-the-sea/)
+
+###The Team:###
+
+<p align="center">
+  <img src="https://github.com/sounds-of-the-sea/TeamPhoto.png" />
+</p>
+
 [Luc](https://github.com/lucl310)<br>
 [Lura](https://github.com/llooper21)<br>
 [Jason](https://github.com/jaywon)<br>
