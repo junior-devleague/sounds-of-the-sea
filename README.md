@@ -1,6 +1,10 @@
 # Sounds of the Sea
 ##Global Game Jam 2017 - Sounds of The Sea##
 
+<!-- <p align="center">
+  <img src="https://github.com/sounds-of-the-sea/" />
+</p> -->
+
 
 ###How to play:###
 
