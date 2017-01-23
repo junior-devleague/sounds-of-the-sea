@@ -45,6 +45,7 @@ function preload(){
   game.load.image('background', 'assets/NewBackground.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.spritesheet('attack', 'assets/Attack.png', 32, 32);
+  // game.state.add("Boot",boot);
   //game.load.spritesheet('profileB', 'assets/ProfileBoy.png', 55, 58);
 };
 
@@ -138,6 +139,7 @@ function changingNet(){
       SuperBadNet.changeNet(500, 150, 'level1Break');
       game.time.events.add(Phaser.Timer.SECOND * 2, kill, this);
       game.time.events.add(Phaser.Timer.SECOND * 2.5, win, this);
+      game.time.events.add(Phaser.Timer.SECOND * 3, restartGame, this);
     }
   }
   if ((rect.x > 120 && rect.x < 190) ||
@@ -163,8 +165,12 @@ function changingNet(){
     enemyAttack.angle + 500;
     enemyAttack.animations.play('walk', 5, true);
     game.time.events.add(Phaser.Timer.SECOND * 1, killEnemyAttack, this);
-    // enemyAttack.kill();
+    game.time.events.add(Phaser.Timer.SECOND * 3, restartGame, this);
   }
+};
+
+function restartGame(){
+  game.state.restart();
 };
 
 function update(){
@@ -176,4 +182,4 @@ function update(){
   playerAttack.x += 11;
 };
 
-var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.CANVAS, 'gameDiv', { preload: preload, update: update, create: create });
+var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.CANVAS, 'gameDiv', { preload: preload, update: update, create: create});
