@@ -65,7 +65,7 @@ function create(){
   waveBox();
 
   createCursor();
-  animateCursor(5000);
+  animateCursor(3000);
 
   profileBox();
 
@@ -147,7 +147,7 @@ function changingNet(){
     singGood.stop();
     GameHero.takeDamage(50);
     cursorSpeed += 10;
-    animateCursor(2000);
+    animateCursor(1500);
     singBad.play();
     if(enemyAttack){
       GameHero.takeDamage(0);
