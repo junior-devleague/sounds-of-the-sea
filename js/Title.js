@@ -16,7 +16,7 @@ Title.prototype = {
   startGame: function() {
     setTimeout(function() {
       game.state.start("Main");
-    }, 5000);
+    }, 1000);
   }
 
 };
