@@ -19,7 +19,7 @@
 ###The Team:###
 
 <p align="center">
-  <img src="https://github.com/sounds-of-the-sea/TeamPhoto.png" />
+  <img src="https://github.com/sounds-of-the-sea/asssets/TeamPhoto.png" />
 </p>
 
 [Luc](https://github.com/lucl310)<br>
