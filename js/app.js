@@ -6,17 +6,11 @@ var mouse;
 var player;
 var attack;
 var charge;
-
 var sin;
-
 //This sets the score to start at -1.
 var score = -1;
-
 var bmd;
 var sin;
-
-
-
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
 var GAME_CONTAINER_ID = 'gameDiv';
@@ -24,9 +18,7 @@ var GAME_CONTAINER_ID = 'gameDiv';
 //This is the object which runs the game.
 function preload(){
   game.load.spritesheet('player', 'assets/Player2Simple.png', 63, 64);
-  //game.load.image('enemy', 'assets/ship.png');
   game.load.spritesheet('enemy', 'assets/net.png', 64, 64);
-
   game.load.image('background', 'assets/background-underwater.png');
   game.load.audio('startMusic', 'assets/mermaids-bgm.ogg');
   game.load.image('attack', 'assets/attack.png');
@@ -37,7 +29,7 @@ function create(){
   //game.add.tileSprite(0, 0, 1000, 600, "background")
 
   game.add.image(44, 80, 'background');
-  
+
   //Add player sprite to screen
   player = game.add.sprite(200, 200, 'player');
   player.scale.setTo(2,2);
@@ -47,7 +39,7 @@ function create(){
   //Add enemy sprite to screen
   enemy = game.add.sprite(500, 100, 'enemy');
   enemy.scale.setTo(4,4);
-  
+
   spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   //obstacle.scale.setTo(1, 0.2);
@@ -75,21 +67,6 @@ function create(){
   waveLevelNorm();
 };
 
-<<<<<<< Updated upstream
-// function openWindow() {
-
-//     if ((tween !== null && tween.isRunning) || popup.scale.x === 1)
-//     {
-//         return;
-//     }
-    
-//     //  Create a tween that will pop-open the window, but only if it's not already tweening or open
-//     tween = game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
-
-// }
-
-=======
->>>>>>> Stashed changes
 function update(){
   if (spaceKey.isDown === true || charge <= 10) {
     console.log("hi")
